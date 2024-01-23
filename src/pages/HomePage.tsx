@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Offers from '../components/Offers'
 
-/* interface Idata {
+ interface Idata {
 	data: {
 		count: number
 		offers: {
@@ -31,11 +31,8 @@ import Offers from '../components/Offers'
 type HomePagePropos = {
 	data: Idata
 	setData: React.Dispatch<React.SetStateAction<Idata>>
-}    */
-type HomePagePropos = {
-	data: any;
-	setData: any;
-} 
+}    
+
 
 const HomePage = ({ data, setData }: HomePagePropos) => {
 	const [isLoading, setIsLoading] = useState(true)

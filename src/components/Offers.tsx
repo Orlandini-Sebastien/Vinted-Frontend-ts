@@ -1,7 +1,7 @@
 import { ReactElement } from 'react'
 import { Link } from 'react-router-dom'
 
-/*  type IData = {
+  type IData = {
 	data: {
 		owner: {
 			account: {
@@ -27,13 +27,11 @@ import { Link } from 'react-router-dom'
 		product_price: number
 		_id: string
 	}[]
-}   */
+}   
 
-type OfferType = {
-	data : any;
-}
 
-const Offers = ({ data }: OfferType): ReactElement => {
+
+const Offers = ({ data }: IData): ReactElement => {
 	return (
 		<section className="my-8 flex flex-wrap justify-start ">
 			{data.map((elem) => {

@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 
-/* interface IData {
+ interface IData {
 	data: {
 		owner: {
 			account: {
@@ -29,11 +29,8 @@ import { useParams } from 'react-router-dom'
 }type ProductPagePropos = {
 	data: IData
 }
-   */
+   
 
-type ProductPagePropos = {
-	data: any
-}
 
 const ProductPage = ({ data }: ProductPagePropos) => {
 	const { id } = useParams()
