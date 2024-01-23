@@ -90,7 +90,7 @@ const HomePage = ({ data, setData }: HomePagePropos) => {
 				</div>
 			</div>
 
-			<Offers data={data} setData={setData} />
+			<Offers data={data} />
 		</div>
 	)
 }
