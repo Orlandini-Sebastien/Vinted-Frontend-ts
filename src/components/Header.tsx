@@ -21,9 +21,13 @@ const Header = () => {
 				</div>
 
 				<div className="max-md:w-full justify-center flex">
-					<Link to={`/user/signup`} className="text-blue-vinted border-blue-vinted border rounded-md p-2 md:m-2 max-md:m-1 w-40 text-xs max-md:w-[31%]">
+					<Link
+						to={`/user/signup`}
+						className="text-blue-vinted border-blue-vinted border border-solid rounded-md p-2 md:m-2 max-md:m-1 w-40 text-xs max-md:w-[31%] flex justify-center"
+					>
 						S'inscrire
 					</Link>
+
 					<button className="text-blue-vinted  border-blue-vinted border rounded-md p-2 md:m-2 max-md:m-1 w-40 text-xs max-md:w-[31%]">
 						Se connecter
 					</button>
