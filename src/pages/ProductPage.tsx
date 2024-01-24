@@ -57,7 +57,7 @@ const ProductPage = () => {
 			max-lg:flex-col max-lg:items-center"
 			>
 				<img
-					className="my-20 max-lg:w-11/12 lg:w-[30%] object-fill "
+					className="my-20 max-lg:w-11/12 lg:w-[30%] object-cover"
 					src={offer.product_image}
 					alt="image"
 				/>
