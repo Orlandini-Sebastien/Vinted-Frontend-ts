@@ -29,7 +29,7 @@ const Header = () => {
 					</Link>
 
 
-					<Link to={`/user/login`} className="text-blue-vinted border-solid border-blue-vinted border rounded-md p-2 md:m-2 max-md:m-1 w-40 text-xs max-md:w-[31%]">
+					<Link to={`/user/login`} className="text-blue-vinted border-solid border-blue-vinted border rounded-md p-2 md:m-2 max-md:m-1 w-40 text-xs max-md:w-[31%] flex justify-center">
 						Se connecter
 					</Link>
 					<button className="bg-blue-vinted  rounded-md p-2 md:m-2 max-md:m-1 text-white w-40 text-xs max-md:w-[31%]">
