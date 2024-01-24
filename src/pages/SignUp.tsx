@@ -5,9 +5,12 @@ import { motion } from 'framer-motion'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import axios from 'axios'
 library.add(faEye, faEyeSlash)
 
 function App() {
+    const [data, setData] = useState({username : "", email : "", password : "", newsletter : false, token : ""})
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 	const [p1, setP1] = useState('')
@@ -39,6 +42,16 @@ function App() {
 		const value = event.target.value
 		setP2(value)
 	}
+
+	const handleHideP1 = () => {
+		sethideP1((prev) => !prev)
+	}
+	const handleHideP2 = () => {
+		sethideP2((prev) => !prev)
+	}
+	const handleReturn = () => {
+		setSubmit(false)
+	}
 	const handleSubmit = (event: React.MouseEvent<HTMLFormElement>): void => {
 		event.preventDefault()
 		if (name === '') {
@@ -63,21 +76,28 @@ function App() {
 			}, 1000)
 		} else {
 			setAlert('')
+            const fetchData = async () => {
+                try {
+                    const {data} = await axios.post(
+                        'https://site--backend-vinted--cfvhczrj5zks.code.run/user/signup',
+                        {username : name, email : email, password : p1, newsletter : false}
+                    )
+                    console.log('response', data);
+                    setData(data);
+                } catch (error) {
+                    console.log('catch app>>>', error)
+                }
+
+            }
+            fetchData()
 			setSubmit((prev) => !prev)
 		}
 	}
-	const handleHideP1 = () => {
-		sethideP1((prev) => !prev)
-	}
-	const handleHideP2 = () => {
-		sethideP2((prev) => !prev)
-	}
-	const handleReturn = () => {
-		setSubmit(false)
-	}
+    console.log("the final data", data);
+
 	return (
 		<>
-			<section className="flex justify-center leading-4 flex-row font-semibold w-full my-2 sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl h-[80vh] items-center">
+			<section className="flex justify-center leading-4 flex-row font-semibold w-full my-2 sm:text-sm md:text-md lg:text-lg xl:text-xl 2xl:text-2xl h-[80vh] items-center">
 				{name !== '' && email !== '' && p1.length > 6 && p1 === p2 && submit ? (
 					<motion.section
 						animate={{ scale: submit ? 1 : 0 }}
