@@ -1,31 +1,27 @@
-
 import { Link } from 'react-router-dom'
 
 type dataProps = {
-	
-		
-		data: {
-			owner: {
-				account: {
-					username: string
-					avatar: {
-						secure_url: string
-					}
+	data: {
+		owner: {
+			account: {
+				username: string
+				avatar: {
+					secure_url: string
 				}
 			}
-			product_date: string
-			product_description: string
-			product_details: [{ MARQUE: string }, { TAILLE: string }]
-			product_image: string
-			product_name: string
-			product_pictures: Array<object>
-			product_price: number
-			_id: string
-		}[]
-	
+		}
+		product_date: string
+		product_description: string
+		product_details: [{ MARQUE: string }, { TAILLE: string }]
+		product_image: string
+		product_name: string
+		product_pictures: Array<object>
+		product_price: number
+		_id: string
+	}[]
 }
 
-const Offers = ({data} : dataProps ) => {
+const Offers = ({ data }: dataProps) => {
 	return (
 		<section className="my-8 flex flex-wrap justify-start ">
 			{data.map((elem) => {
@@ -48,11 +44,13 @@ const Offers = ({data} : dataProps ) => {
 							src={elem.product_image}
 							alt="picture"
 						/>
-						<div className='text-lg '>{elem.product_price && elem.product_price} €</div>
-						<div className='text-md text-gray-400'>
+						<div className="text-lg ">
+							{elem.product_price && elem.product_price} €
+						</div>
+						<div className="text-md text-gray-400">
 							{elem.product_details[1].TAILLE && elem.product_details[1].TAILLE}
 						</div>
-						<div className='text-md text-gray-400'>
+						<div className="text-md text-gray-400">
 							{elem.product_details[0].MARQUE && elem.product_details[0].MARQUE}
 						</div>
 					</Link>
