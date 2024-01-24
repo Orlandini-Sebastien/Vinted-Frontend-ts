@@ -57,11 +57,11 @@ const ProductPage = () => {
 			max-lg:flex-col max-lg:items-center"
 			>
 				<img
-					className="my-20 max-lg:w-11/12 lg:w-[40%] object-fill "
+					className="my-20 max-lg:w-11/12 lg:w-[30%] object-fill "
 					src={offer.product_image}
 					alt="image"
 				/>
-				<div className="my-20 max-lg:w-11/12 max-lg:my-10 px-2 lg:w-[40%] bg-white ">
+				<div className="my-20 max-lg:w-11/12 max-lg:my-10 px-2 lg:w-[30%] bg-white ">
 					<div className="h-1/3">
 						<div className="text-2xl my-3">{offer.product_price} €</div>
 						<div className="flex justify-between">
