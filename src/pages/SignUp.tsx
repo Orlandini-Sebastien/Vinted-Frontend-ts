@@ -8,17 +8,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 library.add(faEye, faEyeSlash)
 
 import axios from 'axios'
-import Cookies from "js-cookie";
+import Cookies from 'js-cookie'
 
 function App() {
-    const [data, setData] = useState({username : "", email : "", password : "", newsletter : false, token : ""})
+	const [data, setData] = useState({})
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 	const [p1, setP1] = useState('')
-	const [p2, setP2] = useState('')
+
 
 	const [hideP1, sethideP1] = useState(true)
-	const [hideP2, sethideP2] = useState(true)
+
 	const [submit, setSubmit] = useState(false)
 	const [alert, setAlert] = useState('')
 	const [shake, setShake] = useState(false)
@@ -39,17 +39,12 @@ function App() {
 		const value = event.target.value
 		setP1(value)
 	}
-	const handleP2Change = (event: React.ChangeEvent<HTMLInputElement>): void => {
-		const value = event.target.value
-		setP2(value)
-	}
+	
 
 	const handleHideP1 = () => {
 		sethideP1((prev) => !prev)
 	}
-	const handleHideP2 = () => {
-		sethideP2((prev) => !prev)
-	}
+	
 	const handleReturn = () => {
 		setSubmit(false)
 	}
@@ -77,25 +72,27 @@ function App() {
 			}, 1000)
 		} else {
 			setAlert('')
-            const fetchData = async () => {
-                try {
-                    const {data} = await axios.post(
-                        'https://site--backend-vinted--cfvhczrj5zks.code.run/user/signup',
-                        {username : name, email : email, password : p1, newsletter : false}
-                    )
-                    console.log('response', data);
-                    Cookies.set("token", data.token, {expire :1});
-                    setData(data);
-                } catch (error) {
-                    console.log('catch app>>>', error)
-                }
-
-            }
-            fetchData()
+			const fetchData = async () => {
+				try {
+					const {
+						data,
+					} = await axios.post(
+						'https://site--backend-vinted--cfvhczrj5zks.code.run/user/signup',
+						{ username: name, email: email, password: p1, newsletter: false }
+					)
+					console.log('response', data);
+                    const token  = data.token;
+					Cookies.set("token", token, { expires: 1 })
+					setData(data)
+				} catch (error) {
+					console.log('catch app>>>', error)
+				}
+			}
+			fetchData()
 			setSubmit((prev) => !prev)
 		}
 	}
-    console.log("the final data", data);
+	console.log('the final data', data)
 
 	return (
 		<>
@@ -131,27 +128,27 @@ function App() {
 						<label className="my-2">Name</label>
 						<input
 							type="text"
-							placeholder="My name"
+							placeholder="Nom d'utilisateur"
 							name="name"
 							value={name}
 							onChange={handleNameChange}
-							className=" bg-slate-200 leading-4 border-none rounded"
+							className=" bg-slate-200 leading-8 border-none rounded"
 						/>
 						<label className="my-2">Email</label>
 						<input
 							type="email"
-							placeholder="sebi@gmail.com"
+							placeholder="Email"
 							name="email"
 							value={email}
 							onChange={handleEmailChange}
-							className=" bg-slate-200 leading-4 border-none rounded"
+							className=" bg-slate-200 leading-8 border-none rounded"
 						/>
 
 						<label className="my-2">Password</label>
 						<div className="relative ">
 							<motion.input
 								type={hideP1 ? 'password' : 'text'}
-								placeholder="azerty"
+								placeholder="Mot de passe"
 								name="p1"
 								value={p1}
 								onChange={handleP1Change}
@@ -162,38 +159,21 @@ function App() {
 										: ''
 								}  ${
 									shake ? 'shake' : ''
-								}  bg-slate-200 leading-4 border-none rounded w-full `}
+								}  bg-slate-200  border-none rounded w-full leading-8`}
 							/>
 							<FontAwesomeIcon
 								icon={hideP1 ? 'eye' : 'eye-slash'}
 								onClick={handleHideP1}
-								className="absolute top-1.5 right-2 "
+								className="absolute top-1/4 right-2 "
 							/>
 						</div>
 
-						<label className="my-2">Confirm your Password</label>
-						<div className="relative">
-							<input
-								type={hideP2 ? 'password' : 'text'}
-								placeholder="azerty"
-								name="p2"
-								value={p2}
-								onChange={handleP2Change}
-								className={` ${
-									alert === 'passwords are not the same' ||
-									alert === '7 charachers minimum !'
-										? 'borderRed'
-										: ''
-								}  ${
-									shake ? 'shake' : ''
-								}  bg-slate-200 leading-4 border-none rounded relative w-full `}
-							/>
-							<FontAwesomeIcon
-								icon={hideP2 ? 'eye' : 'eye-slash'}
-								onClick={handleHideP2}
-								className="absolute top-1.5 right-2 "
-							/>
-						</div>
+                                <div className='flex my-4'>
+                                      <input type="checkbox"  />
+                                      <div>S'inscrire à notre new's Letter</div>
+                                </div>
+                      
+					
 						<p className="text-red-500 my-2 sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
 							{alert}
 						</p>
