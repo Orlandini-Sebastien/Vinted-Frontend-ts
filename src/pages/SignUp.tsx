@@ -1,5 +1,5 @@
 import '../App.css'
-
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -15,7 +15,6 @@ function App() {
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 	const [p1, setP1] = useState('')
-
 
 	const [hideP1, sethideP1] = useState(true)
 
@@ -39,12 +38,11 @@ function App() {
 		const value = event.target.value
 		setP1(value)
 	}
-	
 
 	const handleHideP1 = () => {
 		sethideP1((prev) => !prev)
 	}
-	
+
 	const handleReturn = () => {
 		setSubmit(false)
 	}
@@ -80,9 +78,9 @@ function App() {
 						'https://site--backend-vinted--cfvhczrj5zks.code.run/user/signup',
 						{ username: name, email: email, password: p1, newsletter: false }
 					)
-					console.log('response', data);
-                    const token  = data.token;
-					Cookies.set("token", token, { expires: 1 })
+					console.log('response', data)
+					const token = data.token
+					Cookies.set('token', token, { expires: 1 })
 					setData(data)
 				} catch (error) {
 					console.log('catch app>>>', error)
@@ -96,8 +94,9 @@ function App() {
 
 	return (
 		<>
-			<section className="flex justify-center leading-4 flex-row font-semibold w-full my-2 sm:text-sm md:text-md lg:text-lg xl:text-xl 2xl:text-2xl h-[80vh] items-center">
-				{name !== '' && email !== '' && p1.length > 6 && p1 === p2 && submit ? (
+			<section className="flex flex-col justify-center leading-4 font-semibold w-full my-2 sm:text-sm md:text-md lg:text-lg xl:text-xl 2xl:text-2xl h-[80vh] items-center">
+				<div className="text-lg text-gray-600"> S'inscrire</div>
+				{name !== '' && email !== '' && p1.length > 6 && submit ? (
 					<motion.section
 						animate={{ scale: submit ? 1 : 0 }}
 						initial={{ scale: 0.9 }}
@@ -125,65 +124,64 @@ function App() {
 						onSubmit={handleSubmit}
 						className="flex flex-col my-2 w-1/3 max-md:w-2/3"
 					>
-						<label className="my-2">Name</label>
 						<input
 							type="text"
 							placeholder="Nom d'utilisateur"
 							name="name"
 							value={name}
 							onChange={handleNameChange}
-							className=" bg-slate-200 leading-8 border-none rounded"
+							className=" bg-white  border-b-2 leading-8 my-4"
 						/>
-						<label className="my-2">Email</label>
+
 						<input
 							type="email"
 							placeholder="Email"
 							name="email"
 							value={email}
 							onChange={handleEmailChange}
-							className=" bg-slate-200 leading-8 border-none rounded"
+							className=" bg-white leading-8 border-b-2 border-red-200  my-4"
 						/>
 
-						<label className="my-2">Password</label>
-						<div className="relative ">
-							<motion.input
-								type={hideP1 ? 'password' : 'text'}
-								placeholder="Mot de passe"
-								name="p1"
-								value={p1}
-								onChange={handleP1Change}
-								className={` ${
-									alert === 'passwords are not the same' ||
-									alert === '7 charachers minimum !'
-										? 'borderRed'
-										: ''
-								}  ${
-									shake ? 'shake' : ''
-								}  bg-slate-200  border-none rounded w-full leading-8`}
-							/>
-							<FontAwesomeIcon
-								icon={hideP1 ? 'eye' : 'eye-slash'}
-								onClick={handleHideP1}
-								className="absolute top-1/4 right-2 "
-							/>
+						<motion.input
+							type="password"
+							placeholder="Mot de passe"
+							name="p1"
+							value={p1}
+							onChange={handleP1Change}
+							className={` ${
+								alert === 'passwords are not the same' ||
+								alert === '7 charachers minimum !'
+									? 'borderRed'
+									: ''
+							}  ${
+								shake ? 'shake' : ''
+							}  bg-white  border-b-2 rounded w-full leading-8 my-4`}
+						/>
+						<div className="flex flex-col">
+							<div className="flex  my-4 text-gray-500">
+								<input className="mr-4 " type="checkbox" />
+								<div>S'inscrire à notre new's Letter</div>
+							</div>
+							<div className='text-gray-400 text-xs'>
+								En m'inscrivant je confirme avoir lu et accepté les Termes &
+								Conditions et Politiques de Confidentialités de My Vinted. Je
+								confirme avoir au moins 18 ans.
+							</div>
 						</div>
 
-                                <div className='flex my-4'>
-                                      <input type="checkbox"  />
-                                      <div>S'inscrire à notre new's Letter</div>
-                                </div>
-                      
-					
 						<p className="text-red-500 my-2 sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
 							{alert}
 						</p>
 						<motion.button
 							whileTap={{ scale: 0.98 }}
-							className="my-8 border-none rounded bg-blue-vinted text-white "
+							className="mt-8 mb-4 border-none rounded bg-blue-vinted text-white py-2 "
 						>
-							Register
+							S'inscrire
 						</motion.button>
+                    <Link className='flex justify-center text-xs text-blue-vinted' to={`/login`}  > Tu as déjà un compte ? Connecte-toi !</Link>    
 					</motion.form>
+                    
+
 				)}
 			</section>
 		</>
