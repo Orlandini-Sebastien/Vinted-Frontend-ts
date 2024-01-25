@@ -178,7 +178,7 @@ function App() {
 						>
 							S'inscrire
 						</motion.button>
-                    <Link className='flex justify-center text-xs text-blue-vinted' to={`/login`}  > Tu as déjà un compte ? Connecte-toi !</Link>    
+                    <Link className='flex justify-center text-xs text-blue-vinted' to={`/user/login`}  > Tu as déjà un compte ? Connecte-toi !</Link>    
 					</motion.form>
                     
 
