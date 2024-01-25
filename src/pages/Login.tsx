@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
 	const [email, setEmail] = useState('')
@@ -39,33 +40,30 @@ const Login = () => {
 			}, 1000)
 		} else {
 			setAlert('')
-            
+
 			const fetchData = async () => {
 				try {
 					const {
-						data
+						data,
 					} = await axios.post(
 						'https://site--backend-vinted--cfvhczrj5zks.code.run/user/login',
 						{ email: email, password: p1 }
 					)
 					console.log('response>>>>>>>', data)
-                    setConnection(data)
+					setConnection(data)
 					Cookies.set('token', data.token, { expires: 1 })
-
-					
-
 				} catch (error) {
 					console.log('catch app>>>', error.response.data.message)
 					setAlert(error.response.data.message)
 				}
 			}
 			fetchData()
-            
 		}
 	}
 	console.log('connection>>>', connection)
 	return (
-		<div className="h-[80vh] w-screen flex justify-center items-center">
+		<div className="h-[80vh] w-screen flex flex-col justify-center items-center">
+			<div className="text-lg text-gray-600"> Se connecter</div>
 			<motion.form
 				className="flex flex-col my-2 w-1/3 max-md:w-2/3"
 				animate={{ scale: submit ? 0 : 1 }}
@@ -73,21 +71,18 @@ const Login = () => {
 				transition={{ type: 'spring', bounce: 0.6 }}
 				onSubmit={handleSubmit}
 			>
-				<label className="my-2">Email</label>
 				<input
 					type="email"
-					placeholder="sebi@gmail.com"
+					placeholder="Adresse email"
 					name="email"
 					value={email}
 					onChange={handleEmailChange}
-					className=" bg-slate-200 leading-4 border-none rounded"
+					className=" bg-white   border-b-2 rounded w-full leading-8 my-4"
 				/>
-
-				<label className="my-2">Password</label>
 
 				<motion.input
 					type="password"
-					placeholder="azerty"
+					placeholder="Mot de passe"
 					name="p1"
 					value={p1}
 					onChange={handlePasswordChange}
@@ -95,7 +90,7 @@ const Login = () => {
 						alert === '7 charachers minimum !' ? 'borderRed' : ''
 					}  ${
 						shake ? 'shake' : ''
-					}  bg-slate-200 leading-4 border-none rounded w-full `}
+					}  bg-white  border-b-2 border-red-200  rounded w-full leading-8 my-4 `}
 				/>
 
 				<p className="text-red-500 my-2 sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
@@ -104,10 +99,17 @@ const Login = () => {
 
 				<motion.button
 					whileTap={{ scale: 0.98 }}
-					className="my-8 border-none rounded bg-blue-vinted text-white "
+					className="mt-8 mb-4 border-none rounded bg-blue-vinted text-white py-2 "
 				>
 					Se connecter
 				</motion.button>
+				<Link
+					className="flex justify-center text-xs text-blue-vinted"
+					to={`/user/signup`}
+				>
+					{' '}
+					Pas encore de compte ? Inscris-toi !
+				</Link>
 			</motion.form>
 		</div>
 	)

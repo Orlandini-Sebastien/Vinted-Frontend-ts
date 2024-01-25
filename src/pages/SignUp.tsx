@@ -2,11 +2,6 @@ import '../App.css'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-library.add(faEye, faEyeSlash)
-
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
@@ -15,8 +10,6 @@ function App() {
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
 	const [p1, setP1] = useState('')
-
-	const [hideP1, sethideP1] = useState(true)
 
 	const [submit, setSubmit] = useState(false)
 	const [alert, setAlert] = useState('')
@@ -39,10 +32,6 @@ function App() {
 		setP1(value)
 	}
 
-	const handleHideP1 = () => {
-		sethideP1((prev) => !prev)
-	}
-
 	const handleReturn = () => {
 		setSubmit(false)
 	}
@@ -56,13 +45,6 @@ function App() {
 			setSubmit(false)
 		} else if (p1.length < 6) {
 			setAlert('7 charachers minimum !')
-			setSubmit(false)
-			setShake(true)
-			setTimeout(() => {
-				setShake(false)
-			}, 1000)
-		} else if (p1 !== p2) {
-			setAlert('passwords are not the same')
 			setSubmit(false)
 			setShake(true)
 			setTimeout(() => {
@@ -162,7 +144,7 @@ function App() {
 								<input className="mr-4 " type="checkbox" />
 								<div>S'inscrire à notre new's Letter</div>
 							</div>
-							<div className='text-gray-400 text-xs'>
+							<div className="text-gray-400 text-xs">
 								En m'inscrivant je confirme avoir lu et accepté les Termes &
 								Conditions et Politiques de Confidentialités de My Vinted. Je
 								confirme avoir au moins 18 ans.
@@ -178,10 +160,14 @@ function App() {
 						>
 							S'inscrire
 						</motion.button>
-                    <Link className='flex justify-center text-xs text-blue-vinted' to={`/user/login`}  > Tu as déjà un compte ? Connecte-toi !</Link>    
+						<Link
+							className="flex justify-center text-xs text-blue-vinted"
+							to={`/user/login`}
+						>
+							{' '}
+							Tu as déjà un compte ? Connecte-toi !
+						</Link>
 					</motion.form>
-                    
-
 				)}
 			</section>
 		</>
