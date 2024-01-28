@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const ProductPage = () => {
+const OfferPage = () => {
 	const { id } = useParams()
 
 	const [isLoading, setIsLoading] = useState(true)
@@ -61,38 +61,21 @@ const ProductPage = () => {
 					src={offer.product_image}
 					alt="image"
 				/>
+
 				<div className="my-20 max-lg:w-11/12 max-lg:my-10 px-2 lg:w-[30%] bg-white ">
 					<div className="h-1/3">
 						<div className="text-2xl my-3">{offer.product_price} €</div>
-						<div className="flex justify-between">
-							<span className="text-gray-400">MARQUE</span>{' '}
-							<span className="text-gray-600">
-								{offer.product_details[0].MARQUE}
-							</span>
-						</div>
-						<div className="flex justify-between">
-							<span className="text-gray-400">TAILLE</span>{' '}
-							<span className="text-gray-600">
-								{offer.product_details[1].TAILLE}
-							</span>
-						</div>
-						<div className="flex justify-between">
-							<span className="text-gray-400">ÉTAT</span>{' '}
-							<span className="text-gray-600">
-								{offer.product_details[2].ÉTAT}
-							</span>
-						</div>
-						<div className="flex justify-between">
-							<span className="text-gray-400">COULEUR</span>{' '}
-							<span className="text-gray-600">
-								{offer.product_details[3].COULEUR}
-							</span>
-						</div>
-						<div className="flex justify-between">
-							<span className="text-gray-400">EMPLACEMENT</span>{' '}
-							<span className="text-gray-600">
-								{offer.product_details[4].EMPLACEMENT}
-							</span>
+						<div className="flex flex-col justify-between">
+							{offer.product_details.map((detail, index) => {
+								const keyTab = Object.keys(detail)
+								console.log(keyTab[0])
+								return (
+									<div className="flex justify-around " key={index}>
+										<span className="w-1/2 text-gray-500">{keyTab[0]}</span>
+										<span className="w-1/2">{detail[keyTab[0]]}</span>
+									</div>
+								)
+							})}
 						</div>
 					</div>
 
@@ -120,4 +103,4 @@ const ProductPage = () => {
 	)
 }
 
-export default ProductPage
+export default OfferPage

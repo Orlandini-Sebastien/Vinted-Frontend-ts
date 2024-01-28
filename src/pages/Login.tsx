@@ -1,10 +1,14 @@
-import { useState } from 'react'
+import { ReactElement, useState } from 'react'
 import { motion } from 'framer-motion'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import { Link } from 'react-router-dom'
 
-const Login = () => {
+type loginProps = {
+	layout: string
+}
+
+const Login = ({ layout }: loginProps): ReactElement => {
 	const [email, setEmail] = useState('')
 	const [p1, setP1] = useState('')
 	const [submit, setSubmit] = useState(false)
@@ -52,9 +56,15 @@ const Login = () => {
 					console.log('response>>>>>>>', data)
 					setConnection(data)
 					Cookies.set('token', data.token, { expires: 1 })
-				} catch (error) {
-					console.log('catch app>>>', error.response.data.message)
-					setAlert(error.response.data.message)
+				} catch (e) {
+					console.log('error >>>>', e)
+					const result = e.message // error under useUnknownInCatchVariables
+					if (typeof e === 'string') {
+						e.toUpperCase() // works, `e` narrowed to string
+					} else if (e instanceof Error) {
+						e.message // works, `e` narrowed to Error
+					}
+					setAlert(result)
 				}
 			}
 			fetchData()
@@ -62,8 +72,8 @@ const Login = () => {
 	}
 	console.log('connection>>>', connection)
 	return (
-		<div className="h-[80vh] w-screen flex flex-col justify-center items-center">
-			<div className="text-lg text-gray-600"> Se connecter</div>
+		<div className={layout}>
+			<div className="text-lg text-gray-600 "> Se connecter</div>
 			<motion.form
 				className="flex flex-col my-2 w-1/3 max-md:w-2/3"
 				animate={{ scale: submit ? 0 : 1 }}
@@ -77,7 +87,7 @@ const Login = () => {
 					name="email"
 					value={email}
 					onChange={handleEmailChange}
-					className=" bg-white   border-b-2 rounded w-full leading-8 my-4"
+					className=" bg-white text-blue-vinted  border-b-2 rounded w-full leading-8 my-4"
 				/>
 
 				<motion.input
@@ -107,7 +117,6 @@ const Login = () => {
 					className="flex justify-center text-xs text-blue-vinted"
 					to={`/user/signup`}
 				>
-					{' '}
 					Pas encore de compte ? Inscris-toi !
 				</Link>
 			</motion.form>

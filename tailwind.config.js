@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {    
       colors:{
-      'blue-vinted' : '#0AB1BA'
+      'blue-vinted' : '#007782'
       },
       height:{
         "screen/2": "50vh",

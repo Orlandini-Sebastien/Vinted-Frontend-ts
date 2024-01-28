@@ -23,15 +23,15 @@ type dataProps = {
 
 const Offers = ({ data }: dataProps) => {
 	return (
-		<section className="my-8 flex flex-wrap justify-start ">
+		<section className="w-5/6 m-auto my-8 flex flex-wrap justify-start ">
 			{data.map((elem) => {
 				return (
 					<Link
 						to={`/offer/${elem._id}`}
-						className="px-4 my-4 max-md:p-8  mx-auto xl:w-[19%] lg:w-[24%] md:w-[49%] max-md:w-11/12"
+						className="px-2 my-8 max-md:p-8  mx-auto xl:w-[19%] lg:w-[24%] md:w-[49%] max-md:w-11/12"
 						key={elem._id}
 					>
-						<div className=" flex items-center">
+						<div className=" flex items-center py-1">
 							<img
 								className="p-1 w-10 h-10 object-fill rounded-full "
 								src={elem.owner?.account?.avatar?.secure_url}
