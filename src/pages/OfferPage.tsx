@@ -65,18 +65,7 @@ const OfferPage = () => {
 				<div className="my-20 max-lg:w-11/12 max-lg:my-10 px-2 lg:w-[30%] bg-white ">
 					<div className="h-1/3">
 						<div className="text-2xl my-3">{offer.product_price} €</div>
-						<div className="flex flex-col justify-between">
-							{offer.product_details.map((detail, index) => {
-								const keyTab = Object.keys(detail)
-								console.log(keyTab[0])
-								return (
-									<div className="flex justify-around " key={index}>
-										<span className="w-1/2 text-gray-500">{keyTab[0]}</span>
-										<span className="w-1/2">{detail[keyTab[0]]}</span>
-									</div>
-								)
-							})}
-						</div>
+						<div className="flex flex-col justify-between"></div>
 					</div>
 
 					<div className="h-1/5">
