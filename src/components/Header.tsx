@@ -36,7 +36,7 @@ const Header = ({ token, setToken }: HeaderProps): ReactElement => {
 				<nav className="max-md:w-full justify-center flex">
 					{token ? (
 						<button
-							className='bg-red-400 rounded-md p-2 text-xs '
+							className="bg-red-400 rounded-md p-2 text-xs "
 							onClick={() => {
 								Cookies.remove('userToken')
 								setToken('')
