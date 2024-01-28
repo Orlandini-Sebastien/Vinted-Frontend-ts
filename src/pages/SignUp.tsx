@@ -2,8 +2,10 @@ import '../App.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { ReactElement, useState } from 'react'
 import { motion } from 'framer-motion'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import Cookies from 'js-cookie'
+
+
 
 type SignUpProps = {
 	setToken: React.Dispatch<React.SetStateAction<string>>
@@ -40,9 +42,9 @@ export default function SignUp({ setToken }: SignUpProps): ReactElement {
 	const handleSubmit = async (event: React.MouseEvent<HTMLFormElement>) => {
 		event.preventDefault()
 		if (name === '') {
-			setAlert('name is require !')
+			setAlert('Le nom est obligatoire !')
 		} else if (email === '') {
-			setAlert('email is require !')
+			setAlert('L\'email est obligatoire !')
 		} else if (password.length < 6) {
 			setAlert('7 charachers minimum !')
 			setShake(true)
@@ -68,8 +70,14 @@ export default function SignUp({ setToken }: SignUpProps): ReactElement {
 					setToken(data.token)
 					navigate('/')
 				}
-			} catch (error) {
-				console.log('catch app>>>', error)
+			} catch (e) {
+				const error = e as AxiosError;
+			
+				console.log('catch app>>>', error.response?.status)
+				if(error.response?.status === 400){
+					setAlert("L'email est déjà enregistré")
+				}
+				
 			}
 		}
 	}

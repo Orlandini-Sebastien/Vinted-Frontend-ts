@@ -28,7 +28,7 @@ const HomePage = () => {
 	}
 
 	return isLoading ? (
-		<p>Chargement en cours ...</p>
+		<p className='h-[80vh] w-full flex justify-center items-center'>Chargement en cours ...</p>
 	) : (
 		<div className="  relative h-scree2/3">
 			<img className="h-full w-full object-cover" src={hero} alt="hero" />
