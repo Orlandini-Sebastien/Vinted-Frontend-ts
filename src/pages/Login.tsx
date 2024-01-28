@@ -65,7 +65,6 @@ const Login = ({ layout }: loginProps): ReactElement => {
 					} else if (e instanceof Error) {
 						e.message // works, `e` narrowed to Error
 					}
-				
 				}
 			}
 			fetchData()

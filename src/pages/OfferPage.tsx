@@ -65,7 +65,41 @@ const OfferPage = () => {
 				<div className="my-20 max-lg:w-11/12 max-lg:my-10 px-2 lg:w-[30%] bg-white ">
 					<div className="h-1/3">
 						<div className="text-2xl my-3">{offer.product_price} €</div>
-						<div className="flex flex-col justify-between"></div>
+						<div className="flex justify-between">
+							<span className="text-gray-400">MARQUE</span>{' '}
+							<span className="text-gray-600">
+								{offer.product_details[0].MARQUE}
+							</span>
+						</div>
+						<div className="flex justify-between">
+							<span className="text-gray-400">TAILLE</span>{' '}
+							<span className="text-gray-600">
+								{offer.product_details[1].TAILLE}
+							</span>
+						</div>
+						<div className="flex justify-between">
+							<span className="text-gray-400">ÉTAT</span>{' '}
+							<span className="text-gray-600">
+								{offer.product_details[2].ÉTAT}
+							</span>
+						</div>
+						<div className="flex justify-between">
+							<span className="text-gray-400">COULEUR</span>{' '}
+							<span className="text-gray-600">
+								{offer.product_details[3].COULEUR}
+							</span>
+						</div>
+						<div className="flex justify-between">
+							<span className="text-gray-400">EMPLACEMENT</span>{' '}
+							<span className="text-gray-600">
+								{offer.product_details[4].EMPLACEMENT}
+							</span>
+						</div>
+
+
+
+							
+					
 					</div>
 
 					<div className="h-1/5">
