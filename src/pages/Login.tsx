@@ -58,13 +58,14 @@ const Login = ({ layout }: loginProps): ReactElement => {
 					Cookies.set('token', data.token, { expires: 1 })
 				} catch (e) {
 					console.log('error >>>>', e)
-					const result = e.message // error under useUnknownInCatchVariables
+				
 					if (typeof e === 'string') {
 						e.toUpperCase() // works, `e` narrowed to string
+							setAlert(e)
 					} else if (e instanceof Error) {
 						e.message // works, `e` narrowed to Error
 					}
-					setAlert(result)
+				
 				}
 			}
 			fetchData()
