@@ -22,7 +22,7 @@ function App() {
 				<Route
 					path="/user/login"
 					element={
-						<Login layout="h-[80vh] w-screen flex flex-col justify-center items-center" />
+						<Login layout="h-[80vh] w-screen flex flex-col justify-center items-center" setToken={setToken} />
 					}
 				/>
 			</Routes>

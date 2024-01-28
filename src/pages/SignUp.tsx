@@ -1,11 +1,9 @@
 import '../App.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { ReactElement, useState } from 'react'
-import { motion } from 'framer-motion'
+
 import axios, { AxiosError } from 'axios'
 import Cookies from 'js-cookie'
-
-
 
 type SignUpProps = {
 	setToken: React.Dispatch<React.SetStateAction<string>>
@@ -44,9 +42,9 @@ export default function SignUp({ setToken }: SignUpProps): ReactElement {
 		if (name === '') {
 			setAlert('Le nom est obligatoire !')
 		} else if (email === '') {
-			setAlert('L\'email est obligatoire !')
+			setAlert("L'email est obligatoire !")
 		} else if (password.length < 6) {
-			setAlert('7 charachers minimum !')
+			setAlert('7 charachères minimum !')
 			setShake(true)
 			setTimeout(() => {
 				setShake(false)
@@ -71,13 +69,12 @@ export default function SignUp({ setToken }: SignUpProps): ReactElement {
 					navigate('/')
 				}
 			} catch (e) {
-				const error = e as AxiosError;
-			
+				const error = e as AxiosError
+
 				console.log('catch app>>>', error.response?.status)
-				if(error.response?.status === 400){
+				if (error.response?.status === 400) {
 					setAlert("L'email est déjà enregistré")
 				}
-				
 			}
 		}
 	}
@@ -87,10 +84,7 @@ export default function SignUp({ setToken }: SignUpProps): ReactElement {
 			<section className="flex flex-col justify-center leading-4 font-semibold w-full my-2 sm:text-sm md:text-md lg:text-lg xl:text-xl 2xl:text-2xl h-[80vh] items-center">
 				<div className="text-lg text-gray-600"> S'inscrire</div>
 
-				<motion.form
-					animate={{ scale: 1 }}
-					initial={{ scale: 0.9 }}
-					transition={{ type: 'spring', bounce: 0.6 }}
+				<form
 					onSubmit={handleSubmit}
 					className="flex flex-col my-2 w-1/3 max-md:w-2/3"
 				>
@@ -112,7 +106,7 @@ export default function SignUp({ setToken }: SignUpProps): ReactElement {
 						className=" bg-white leading-8 border-b-2 border-red-200  my-4"
 					/>
 
-					<motion.input
+					<input
 						type="password"
 						placeholder="Mot de passe"
 						name="p1"
@@ -148,19 +142,16 @@ export default function SignUp({ setToken }: SignUpProps): ReactElement {
 					<p className="text-red-500 my-2 sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
 						{alert}
 					</p>
-					<motion.button
-						whileTap={{ scale: 0.98 }}
-						className="mt-8 mb-4 border-none rounded bg-blue-vinted text-white py-2 "
-					>
+					<button className="mt-8 mb-4 border-none rounded bg-blue-vinted text-white py-2 ">
 						S'inscrire
-					</motion.button>
+					</button>
 					<Link
 						className="flex justify-center text-xs text-blue-vinted"
 						to={`/user/login`}
 					>
 						Tu as déjà un compte ? Connecte-toi !
 					</Link>
-				</motion.form>
+				</form>
 			</section>
 		</>
 	)
