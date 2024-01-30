@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
+
+
 const OfferPage = () => {
 	const { id } = useParams()
 
@@ -51,19 +53,19 @@ const OfferPage = () => {
 	return isLoading ? (
 		<p>Is Loading</p>
 	) : (
-		<div className=" h-full  bg-[#EBEDEE]">
+		<div className= "lg:h-[85vh] bg-[#EBEDEE]"  >
 			<div
-				className=" lg:justify-around mt-20 flex 
-			max-lg:flex-col max-lg:items-center"
+				className=" lg:justify-around  flex 
+			max-lg:flex-col max-lg:items-center "
 			>
 				<img
-					className="my-20 max-lg:w-11/12 lg:w-[30%] object-cover"
+					className="lg:my-20 max-lg:my-8 max-lg:w-11/12 lg:w-[30%] lg:h-[60vh] object-cover "
 					src={offer.product_image}
 					alt="image"
 				/>
 
-				<div className="my-20 max-lg:w-11/12 max-lg:my-10 px-2 lg:w-[30%] bg-white ">
-					<div className="h-1/3">
+				<div className="flex flex-col justify-around my-20 max-lg:w-11/12 max-lg:my-2 px-2 lg:w-[30%] lg:h-[60vh]  bg-white ">
+					
 						<div className="text-2xl my-3">{offer.product_price} €</div>
 						<div className="flex justify-between">
 							<span className="text-gray-400">MARQUE</span>{' '}
@@ -95,16 +97,16 @@ const OfferPage = () => {
 								{offer.product_details[4].EMPLACEMENT}
 							</span>
 						</div>
-					</div>
+					
 
-					<div className="h-1/5">
-						<div className="text-gray-800 font-bold mt-8 my-2">
+					
+						<div className="text-gray-800 font-bold mt-4 my-2">
 							{offer.product_name}
 						</div>
 						<div className="text-gray-600">{offer.product_description}</div>
-					</div>
+				
 
-					<div className=" flex items-center my-4">
+					<div className=" flex items-center my-4 ">
 						<img
 							className="p-1 w-10 h-10 object-fill rounded-full"
 							src={offer.owner?.account?.avatar?.secure_url}
@@ -112,7 +114,7 @@ const OfferPage = () => {
 						<div className="p-1 text-xs">{offer.owner.account?.username}</div>
 					</div>
 
-					<button className="w-full bg-blue-vinted rounded-md text-white h-10 my-20">
+					<button className="w-full bg-blue-vinted rounded-md text-white h-10 ">
 						Acheter
 					</button>
 				</div>

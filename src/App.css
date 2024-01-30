@@ -2,8 +2,10 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-body {
+
+html{
 	background-color: white;
+	min-height: 650px ;
 }
 
 .borderRed {

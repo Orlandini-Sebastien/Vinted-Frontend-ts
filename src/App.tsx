@@ -14,15 +14,17 @@ function App() {
 	const [displaySignUp, setDisplaySignUp] = useState(false)
 	return (
 		<Router>
+
 			<Header
 				setDisplayLogin={setDisplayLogin}
 				setDisplaySignUp={setDisplaySignUp}
 				token={token}
 				setToken={setToken}
 			/>
+
 			<Routes>
-				<Route path="/" element={<HomePage />} />
-				<Route path="/offer/:id" element={<OfferPage />} />
+				<Route path="/" element={<HomePage displayLogin={displayLogin} displaySignUp={displaySignUp} />} />
+				<Route path="/offer/:id" element={<OfferPage  />} />
 			</Routes>
 			{displayLogin && (
 				<ModalLogin

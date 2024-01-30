@@ -17,7 +17,7 @@ type HeaderProps = {
 
 const Header = ({ token, setToken, setDisplayLogin, setDisplaySignUp }: HeaderProps): ReactElement => {
 	return (
-		<header className="bg-white">
+		<header className="bg-white h-[15vh]">
 			<header className="flex justify-center flex-wrap md:w-4/5 max-md:w-11/12 m-auto py-2 items-center">
 				<div className="max-md:w-full md:w-1/2 flex-row flex">
 					<Link to={`/`}>

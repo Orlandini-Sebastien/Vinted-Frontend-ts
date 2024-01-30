@@ -18,7 +18,7 @@ const ModalLogin = ({
 			onClick={() => setDisplayLogin(false)}
 		>
 			<div
-				className="max-md:w-11/12 md:w-1/3 h-2/3 flex justify-center items-center bg-white "
+				className="max-md:w-11/12 md:w-1/3 h-2/3 flex justify-center items-center bg-white relative"
 				onClick={(event) => event.stopPropagation()}
 			>
 				<div className="h-full w-full flex justify-center items-center">
@@ -31,6 +31,7 @@ const ModalLogin = ({
 					/>
 				</div>
 			</div>
+			
 		</div>
 	)
 }

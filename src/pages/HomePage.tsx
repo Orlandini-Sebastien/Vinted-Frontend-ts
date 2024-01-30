@@ -4,7 +4,12 @@ import Offers from '../components/Offers'
 import hero from '../assets/banner-tablets-up-afe3d19776592a72f165c1bb93fd02c5528250a8c670ecc1656654323f9d4856.jpg'
 import tear from '../assets/tear.884480420945b3afd77b44a6c5f98567.svg'
 
-const HomePage = () => {
+type HomePageProps = {
+	displayLogin : boolean;
+	displaySignUp : boolean;
+}
+
+const HomePage = ({displayLogin, displaySignUp} : HomePageProps) => {
 	const [isLoading, setIsLoading] = useState(true)
 	const [data, setData] = useState([])
 
@@ -32,7 +37,7 @@ const HomePage = () => {
 			Chargement en cours ...
 		</p>
 	) : (
-		<div className="  relative h-scree2/3">
+		<div className={(displayLogin || displaySignUp)? "relative h-scree2/3 overflow-hidden" : "relative h-scree2/3" }   >
 			<img className="h-full w-full object-cover" src={hero} alt="hero" />
 			<img className="absolute w-full bottom-0" src={tear} alt="tear" />
 			<div className="max-md:11/12 md:w-5/6 m-auto">
