@@ -45,8 +45,8 @@ const Header = ({
 
 	return (
 		<header className="bg-white h-[15vh]">
-			<header className="flex justify-center flex-wrap md:w-4/5 max-md:w-11/12 m-auto py-2 items-center">
-				<div className="max-md:w-full md:w-1/2 flex-row flex">
+			<header className="flex justify-center  max-lg:flex-wrap md:w-4/5 max-md:w-11/12 m-auto py-2 items-center border border-solid border-red-400">
+				<div className="w-full  flex-row flex">
 					<Link to={`/`}>
 						<img
 							className="flex p-2 w-24 object-fill"
@@ -56,7 +56,7 @@ const Header = ({
 					</Link>
 
 					<input
-						className="p-2 m-2 flex-1 w-max  bg-slate-100 rounded-md text-xs text-blue-vinted font-bold"
+						className="p-2 m-2 flex-1  bg-slate-100 rounded-md text-xs text-blue-vinted font-bold"
 						type="text"
 						placeholder="Recherche des articles"
 						value={searchOffer}
