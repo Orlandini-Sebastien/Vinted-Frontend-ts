@@ -1,12 +1,13 @@
 import './App.css'
+import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Cookies from 'js-cookie'
 import HomePage from './pages/HomePage'
 import Header from './components/Header'
 import OfferPage from './pages/OfferPage'
 import ModalLogin from './components/ModalLogin'
 import ModalSignUp from './components/ModalSignUp'
-import { useState } from 'react'
-import Cookies from 'js-cookie'
+import OfferPublish from './pages/OfferPublish'
 
 function App() {
 	const [token, setToken] = useState(Cookies.get('userToken') || '') // on stoke le token dans useState
@@ -20,7 +21,6 @@ function App() {
 				setDisplaySignUp={setDisplaySignUp}
 				token={token}
 				setToken={setToken}
-			
 				setData={setData}
 			/>
 
@@ -37,7 +37,10 @@ function App() {
 					}
 				/>
 				<Route path="/offer/:id" element={<OfferPage />} />
+				<Route path='offer/publish' element={<OfferPublish />} />
 			</Routes>
+
+
 			{displayLogin && (
 				<ModalLogin
 					setDisplaySignUp={setDisplaySignUp}

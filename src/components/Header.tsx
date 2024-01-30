@@ -5,11 +5,6 @@ import Cookies from 'js-cookie'
 import { useState } from 'react'
 import axios from 'axios'
 
-/* type HeaderProps = {
-	visible: boolean
-	setVisible: React.Dispatch<React.SetStateAction<boolean>>
-}{ visible, setVisible }: HeaderProps  */
-
 type HeaderProps = {
 	token: string
 	setToken: React.Dispatch<React.SetStateAction<string>>
@@ -28,7 +23,7 @@ const Header = ({
 	const [searchOffer, setSearchOffer] = useState('')
 	const [hiddeSort, setHiddeSort] = useState(true)
 	const [croissant, setCroissant] = useState(false)
-	
+
 	const handleSearchOffer = async (
 		event: React.ChangeEvent<HTMLInputElement>
 	) => {
@@ -38,7 +33,9 @@ const Header = ({
 
 		try {
 			const response = await axios.get(
-				`https://site--backend-vinted--cfvhczrj5zks.code.run/offers?sort=${croissant?"asc":"desc"}&product_name=${value}`
+				`https://site--backend-vinted--cfvhczrj5zks.code.run/offers?sort=${
+					croissant ? 'asc' : 'desc'
+				}&product_name=${value}`
 			)
 			setData(response.data)
 			console.log('la reponse header', response.data)
@@ -46,10 +43,12 @@ const Header = ({
 			console.log('catch app>>>', error)
 		}
 	}
-	const handleSort = async() => {
+	const handleSort = async () => {
 		try {
 			const response = await axios.get(
-				`https://site--backend-vinted--cfvhczrj5zks.code.run/offers?sort=${croissant?"asc":"desc"}`
+				`https://site--backend-vinted--cfvhczrj5zks.code.run/offers?sort=${
+					croissant ? 'asc' : 'desc'
+				}`
 			)
 			setData(response.data)
 			console.log('la reponse header', response.data)
@@ -58,10 +57,8 @@ const Header = ({
 		}
 	}
 
-
-
 	return (
-		<header className="bg-white h-[25vh] flex ">
+		<header className="bg-white h-[15vh] flex ">
 			<header className="flex justify-center  max-lg:flex-wrap md:w-4/5 max-md:w-11/12 m-auto py-2 items-center ">
 				<div className="w-full  flex-row flex relative">
 					<Link to={`/`}>
@@ -88,20 +85,52 @@ const Header = ({
 						Trier par ⬇️
 					</button>
 
-					<div className={(hiddeSort)? 'hidden' : ''}>
+					<div className={hiddeSort ? 'hidden' : ''}>
 						<div className="bg-white p-2 my-2 absolute max-lg:z-20 max-md:right-4 md:-right-12 top-3/4 border border-solid border-gray-400">
 							<div className="flex justify-between">
 								Prix décroissant
 								<div>
-									<span onClick={()=> { setCroissant(!croissant);
-									handleSort();
-									}} className={croissant? "hidden" : ""}  >⚪</span> <span onClick={()=> { setCroissant(!croissant); 	handleSort();}} className={!croissant? "hidden" : ""} >⚫</span>
+									<span
+										onClick={() => {
+											setCroissant(!croissant)
+											handleSort()
+										}}
+										className={croissant ? 'hidden' : ''}
+									>
+										⚪
+									</span>{' '}
+									<span
+										onClick={() => {
+											setCroissant(!croissant)
+											handleSort()
+										}}
+										className={!croissant ? 'hidden' : ''}
+									>
+										⚫
+									</span>
 								</div>
 							</div>
 							<div className="flex justify-between">
 								Prix croissant
 								<div>
-									<span onClick={()=> { setCroissant(!croissant); handleSort()}} className={!croissant? "hidden" : ""} >⚪</span> <span onClick={()=> { setCroissant(!croissant);handleSort()}} className={croissant? "hidden" : ""}>⚫</span>
+									<span
+										onClick={() => {
+											setCroissant(!croissant)
+											handleSort()
+										}}
+										className={!croissant ? 'hidden' : ''}
+									>
+										⚪
+									</span>{' '}
+									<span
+										onClick={() => {
+											setCroissant(!croissant)
+											handleSort()
+										}}
+										className={croissant ? 'hidden' : ''}
+									>
+										⚫
+									</span>
 								</div>
 							</div>
 						</div>
@@ -134,9 +163,9 @@ const Header = ({
 							>
 								Se connecter
 							</button>
-							<button className="bg-blue-vinted  rounded-md p-2 md:m-2 max-md:m-1 text-white w-40 text-xs max-md:w-[31%]">
+							<Link to={"/offer/publish"} className="bg-blue-vinted  rounded-md p-2 md:m-2 max-md:m-1 text-white w-40 text-xs max-md:w-[31%] justify-center items-center flex">
 								Vends tes articles
-							</button>
+							</Link>
 						</>
 					)}
 				</nav>
