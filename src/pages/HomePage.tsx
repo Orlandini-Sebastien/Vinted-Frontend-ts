@@ -20,7 +20,7 @@ const HomePage = ({data, setData, displayLogin, displaySignUp} : HomePageProps) 
 		const fetchData = async () => {
 			try {
 				const response = await axios.get(
-					'https://site--backend-vinted--cfvhczrj5zks.code.run/offers'
+					'https://site--backend-vinted--cfvhczrj5zks.code.run/offers?sort=asc'
 				)
 				setData(response.data)
 			} catch (error) {
