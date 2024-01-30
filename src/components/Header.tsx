@@ -44,7 +44,7 @@ const Header = ({
 	}
 
 	return (
-		<header className="bg-white h-[15vh]">
+		<header className="bg-white h-[25vh] flex ">
 			<header className="flex justify-center  max-lg:flex-wrap md:w-4/5 max-md:w-11/12 m-auto py-2 items-center ">
 				<div className="w-full  flex-row flex">
 					<Link to={`/`}>

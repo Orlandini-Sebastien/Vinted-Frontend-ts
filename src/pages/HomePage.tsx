@@ -40,7 +40,7 @@ const HomePage = ({data, setData, displayLogin, displaySignUp} : HomePageProps) 
 			Chargement en cours ...
 		</p>
 	) : (
-		<div className={(displayLogin || displaySignUp)? "relative h-scree2/3 overflow-hidden max-md:mt-0 max-lg:mt-10" : "relative h-scree2/3 max-md:mt-0 max-lg:mt-10" }   >
+		<div className={(displayLogin || displaySignUp)? "relative h-scree2/3 overflow-hidden " : "relative h-scree2/3 " }   >
 			<img className="h-full w-full object-cover" src={hero} alt="hero" />
 			<img className="absolute w-full bottom-0" src={tear} alt="tear" />
 			<div className="max-md:11/12 md:w-5/6 m-auto">
