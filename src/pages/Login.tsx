@@ -83,49 +83,48 @@ const Login = ({
 		<div className={layout}>
 			<div className="text-lg text-gray-600 h-1/6 "> Se connecter</div>
 			<form className={styleForm} onSubmit={handleSubmit}>
-				<div className='h-1/2 flex flex-col justify-center'>
+				<div className="h-1/2 flex flex-col justify-center">
 					<input
-					type="email"
-					placeholder="Adresse email"
-					name="email"
-					value={email}
-					onChange={handleEmailChange}
-					className=" bg-white text-blue-vinted  border-b-2 rounded w-full leading-8 my-4"
-				/>
+						type="email"
+						placeholder="Adresse email"
+						name="email"
+						value={email}
+						onChange={handleEmailChange}
+						className=" bg-white text-blue-vinted  border-b-2 rounded w-full leading-8 my-4"
+					/>
 
-				<input
-					type="password"
-					placeholder="Mot de passe"
-					name="p1"
-					value={password}
-					onChange={handlePasswordChange}
-					className={` ${
-						alert === '7 charachers minimum !' ? 'borderRed' : ''
-					}  ${
-						shake ? 'shake' : ''
-					}  bg-white  border-b-2 border-red-200  rounded w-full leading-8 my-4 `}
-				/>
+					<input
+						type="password"
+						placeholder="Mot de passe"
+						name="p1"
+						value={password}
+						onChange={handlePasswordChange}
+						className={` ${
+							alert === '7 charachers minimum !' ? 'borderRed' : ''
+						}  ${
+							shake ? 'shake' : ''
+						}  bg-white  border-b-2 border-red-200  rounded w-full leading-8 my-4 `}
+					/>
 				</div>
-				
-				<div className='h-1/4 flex flex-col '>
-				<p className="text-red-500 my-2 sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
-					{alert}
-				</p>
 
-				<button className="mt-8 mb-4 border-none rounded bg-blue-vinted text-white py-2 flex w-full justify-center">
-					Se connecter
-				</button>
-				<button
-					className="flex justify-center text-xs text-blue-vinted w-full"
-					onClick={() => {
-						setDisplayLogin(false)
-						setDisplaySignUp(true)
-					}}
-				>
-					Pas encore de compte ? Inscris-toi !
-				</button>	
+				<div className="h-1/4 flex flex-col ">
+					<p className="text-red-500 my-2 sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
+						{alert}
+					</p>
+
+					<button className="mt-8 mb-4 border-none rounded bg-blue-vinted text-white py-2 flex w-full justify-center">
+						Se connecter
+					</button>
+					<button
+						className="flex justify-center text-xs text-blue-vinted w-full"
+						onClick={() => {
+							setDisplayLogin(false)
+							setDisplaySignUp(true)
+						}}
+					>
+						Pas encore de compte ? Inscris-toi !
+					</button>
 				</div>
-				
 			</form>
 		</div>
 	)
