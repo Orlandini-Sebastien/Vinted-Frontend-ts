@@ -45,7 +45,7 @@ const Header = ({
 
 	return (
 		<header className="bg-white h-[15vh]">
-			<header className="flex justify-center  max-lg:flex-wrap md:w-4/5 max-md:w-11/12 m-auto py-2 items-center border border-solid border-red-400">
+			<header className="flex justify-center  max-lg:flex-wrap md:w-4/5 max-md:w-11/12 m-auto py-2 items-center ">
 				<div className="w-full  flex-row flex">
 					<Link to={`/`}>
 						<img
