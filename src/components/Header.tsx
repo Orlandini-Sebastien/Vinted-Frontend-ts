@@ -50,7 +50,7 @@ const Header = ({ token, setToken, setDisplayLogin, setDisplaySignUp }: HeaderPr
 						<>
 							<button
 								onClick={()=> setDisplaySignUp(true)}
-								className="text-blue-vinted border-blue-vinted border border-solid rounded-md p-2 md:m-2 max-md:m-1 w-40 text-xs max-md:w-[31%] flex justify-center"
+								className="text-blue-vinted border-blue-vinted border border-solid rounded-md p-2 md:m-2 max-md:m-1 w-40 text-xs max-md:w-[31%] flex justify-center items-center"
 							>
 								S'inscrire
 							</button>
@@ -61,7 +61,7 @@ const Header = ({ token, setToken, setDisplayLogin, setDisplaySignUp }: HeaderPr
 
 							<button
 								onClick={() => setDisplayLogin(true)}
-								className="text-blue-vinted border-solid border-blue-vinted border rounded-md p-2 md:m-2 max-md:m-1 w-40 text-xs max-md:w-[31%] flex justify-center"
+								className="text-blue-vinted border-solid border-blue-vinted border rounded-md p-2 md:m-2 max-md:m-1 w-40 text-xs max-md:w-[31%] flex justify-center items-center"
 							>
 								Se connecter
 							</button>
