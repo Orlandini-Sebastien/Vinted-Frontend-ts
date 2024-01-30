@@ -15,17 +15,28 @@ function App() {
 	const [data, setData] = useState([])
 	return (
 		<Router>
-
 			<Header
 				setDisplayLogin={setDisplayLogin}
 				setDisplaySignUp={setDisplaySignUp}
 				token={token}
 				setToken={setToken}
+			
+				setData={setData}
 			/>
 
 			<Routes>
-				<Route path="/" element={<HomePage data={data} setData={setData} displayLogin={displayLogin} displaySignUp={displaySignUp} />} />
-				<Route path="/offer/:id" element={<OfferPage  />} />
+				<Route
+					path="/"
+					element={
+						<HomePage
+							data={data}
+							setData={setData}
+							displayLogin={displayLogin}
+							displaySignUp={displaySignUp}
+						/>
+					}
+				/>
+				<Route path="/offer/:id" element={<OfferPage />} />
 			</Routes>
 			{displayLogin && (
 				<ModalLogin

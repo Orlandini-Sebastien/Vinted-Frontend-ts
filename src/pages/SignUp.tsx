@@ -101,7 +101,7 @@ export default function SignUp({
 						name="name"
 						value={name}
 						onChange={handleNameChange}
-						className=" bg-white  border-b-2 leading-8 my-4 flex w-full"
+						className=" bg-white  border-b-2 leading-8 my-4 flex w-full text-blue-vinted"
 					/>
 
 					<input
@@ -110,7 +110,7 @@ export default function SignUp({
 						name="email"
 						value={email}
 						onChange={handleEmailChange}
-						className=" bg-white leading-8 border-b-2 border-red-200  my-4 flex w-full"
+						className=" bg-white leading-8 border-b-2 border-red-200  my-4 flex w-full text-blue-vinted"
 					/>
 
 					<input
@@ -126,7 +126,7 @@ export default function SignUp({
 								: ''
 						}  ${
 							shake ? 'shake' : ''
-						}  bg-white  border-b-2 rounded w-full leading-8 my-4`}
+						}  bg-white  border-b-2 rounded w-full leading-8 my-4 `}
 					/>
 					<div className="flex flex-col">
 						<div className="flex  my-4 text-gray-500">
