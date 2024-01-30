@@ -89,7 +89,7 @@ const Header = ({
 					</button>
 
 					<div className={(hiddeSort)? 'hidden' : ''}>
-						<div className="bg-white p-2 my-2 absolute -right-12 top-3/4 border border-solid border-gray-400">
+						<div className="bg-white p-2 my-2 absolute max-lg:z-20 max-md:right-4 md:-right-12 top-3/4 border border-solid border-gray-400">
 							<div className="flex justify-between">
 								Prix décroissant
 								<div>
