@@ -24,10 +24,10 @@ export default function SignUp({
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const [newsletter, setNewsletter] = useState(false)
+	const [avatar, setAvatar] = useState<File | null>(null)
 
 	const [alert, setAlert] = useState('')
 	const [shake, setShake] = useState(false)
-	
 
 	const handleNameChange = (
 		event: React.ChangeEvent<HTMLInputElement>
@@ -46,6 +46,12 @@ export default function SignUp({
 		setPassword(value)
 	}
 
+	const handleAvatarChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		if (event.target.files) {
+			setAvatar(event.target.files[0])
+		}
+	}
+
 	const handleSubmit = async (event: React.MouseEvent<HTMLFormElement>) => {
 		event.preventDefault()
 		if (name === '') {
@@ -61,8 +67,39 @@ export default function SignUp({
 		} else {
 			setAlert('')
 
-			try {
-				if (name && email && password) {
+			if (name && email && password) {
+				let newslettertoString: string = ''
+				if (newsletter) {
+					newslettertoString = newslettertoString + '1'
+				} else newslettertoString += '0'
+
+				const formData = new FormData()
+				formData.append('username', name)
+				formData.append('email', email)
+				formData.append('password', password)
+				formData.append('newsletter', newslettertoString)
+				if (avatar) {
+					formData.append('avatar', avatar)
+				}
+
+				try {
+					const { data } = await axios.post(
+						'https://site--backend-vinted--cfvhczrj5zks.code.run/user/signup',
+						formData
+					)
+					console.log('response', data)
+					Cookies.set('userToken', data.token, { expires: 1, secure: true })
+					setToken(data.token)
+				} catch (e) {
+					const error = e as AxiosError
+
+					console.log('catch app>>>', error.response?.status)
+					if (error.response?.status === 400) {
+						setAlert("L'email est déjà enregistré")
+					}
+				}
+
+				/*   WORK
 					const { data } = await axios.post(
 						'https://site--backend-vinted--cfvhczrj5zks.code.run/user/signup',
 						{
@@ -74,15 +111,7 @@ export default function SignUp({
 					)
 					console.log('response', data)
 					Cookies.set('userToken', data.token, { expires: 1, secure: true })
-					setToken(data.token)
-				}
-			} catch (e) {
-				const error = e as AxiosError
-
-				console.log('catch app>>>', error.response?.status)
-				if (error.response?.status === 400) {
-					setAlert("L'email est déjà enregistré")
-				}
+					setToken(data.token)  */
 			}
 		}
 	}
@@ -99,8 +128,23 @@ export default function SignUp({
 						name="name"
 						value={name}
 						onChange={handleNameChange}
-						className=" bg-white  border-b-2 leading-8 my-4 flex w-full text-blue-vinted"
+						className=" bg-white   border-b-2 leading-8 my-4 flex w-full text-blue-vinted"
 					/>
+					<div className="flex justify-center items-center">
+						<label
+							className="text-gray-400 w-1/2 border-2 border-solid border-gray-300 flex justify-center items-center"
+							htmlFor="avatar"
+						>
+							Avatar
+						</label>
+						<input
+							className=" bg-white  leading-8 my-4 flex  text-blue-vinted w-0"
+							type="file"
+							id="avatar"
+							name="avatar"
+							onChange={handleAvatarChange}
+						/>
+					</div>
 
 					<input
 						type="email"

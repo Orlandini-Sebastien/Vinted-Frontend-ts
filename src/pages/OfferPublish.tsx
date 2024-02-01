@@ -158,13 +158,20 @@ const OfferPublish = ({ token, setDisplayLogin }: OfferPublishProps) => {
 			>
 				<div className="h-[5%] font-bold ">Vends ton article</div>
 				<div className="bg-white h-[20%] flex justify-center items-center">
+					<label
+						className="text-blue-vinted w-1/2 border-2 border-solid border-blue-vinted flex justify-center items-center hover:cursor-pointer hover:bg-blue-vinted/50"
+						htmlFor="image"
+					>
+						{' '}
+						Ajouter une photo
+					</label>
 					<input
+						className=" bg-white  leading-8 my-4 flex  text-blue-vinted w-0"
 						type="file"
 						name="image"
 						id="image"
 						onChange={handleImageChange}
 					/>
-					Ajoute une photo
 				</div>
 				<div className="bg-white h-[20%] flex flex-col">
 					<div className="flex w-full h-1/3 border-solid border-b border-gray-200">
