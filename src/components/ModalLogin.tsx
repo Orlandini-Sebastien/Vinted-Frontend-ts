@@ -23,7 +23,7 @@ const ModalLogin = ({
 			>
 				<div className="h-full w-full flex justify-center items-center">
 					<Login
-						layout="h-[80vh] w-screen flex flex-col justify-center items-center"
+						layout="h-[100%] w-screen flex flex-col items-center py-4  "
 						styleForm="h-1/2  w-11/12"
 						setToken={setToken}
 						setDisplayLogin={setDisplayLogin}
@@ -31,7 +31,6 @@ const ModalLogin = ({
 					/>
 				</div>
 			</div>
-			
 		</div>
 	)
 }

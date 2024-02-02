@@ -36,7 +36,9 @@ const Offers = ({ data }: dataProps) => {
 								className="p-1 w-10 h-10 object-fill rounded-full "
 								src={elem.owner?.account?.avatar?.secure_url}
 							/>
-							<div className="p-1 text-md">{elem.owner.account.username}</div>
+							<div className="p-1 text-md flex flex-shrink-0 ">
+								{elem.owner.account.username}
+							</div>
 						</div>
 
 						<img

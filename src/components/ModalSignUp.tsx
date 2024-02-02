@@ -2,17 +2,15 @@ import { ReactElement } from 'react'
 import SignUp from '../pages/SignUp'
 
 type ModalSignUpProps = {
-	setDisplaySignUp: React.Dispatch<React.SetStateAction<boolean>>;
-    setDisplayLogin: React.Dispatch<React.SetStateAction<boolean>>
-	setToken: React.Dispatch<React.SetStateAction<string>>;
-
+	setDisplaySignUp: React.Dispatch<React.SetStateAction<boolean>>
+	setDisplayLogin: React.Dispatch<React.SetStateAction<boolean>>
+	setToken: React.Dispatch<React.SetStateAction<string>>
 }
 
 const ModalSignUp = ({
 	setDisplaySignUp,
-    setDisplayLogin,
+	setDisplayLogin,
 	setToken,
-  
 }: ModalSignUpProps): ReactElement => {
 	return (
 		<div
@@ -25,12 +23,11 @@ const ModalSignUp = ({
 			>
 				<div className="h-full w-full flex justify-center items-center">
 					<SignUp
-						layoutSignUp="h-[80vh] w-screen flex flex-col justify-center items-center"
-                        styleSignUp='h-11/12 w-11/12'
-                        setDisplayLogin={setDisplayLogin}
-                        setDisplaySignUp={setDisplaySignUp}
+						layoutSignUp="h-[100%] w-screen flex flex-col items-center py-4  "
+						styleSignUp=" h-full w-11/12 flex flex-col  justify-around "
+						setDisplayLogin={setDisplayLogin}
+						setDisplaySignUp={setDisplaySignUp}
 						setToken={setToken}
-
 					/>
 				</div>
 			</div>

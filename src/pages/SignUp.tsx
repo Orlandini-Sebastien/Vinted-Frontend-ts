@@ -90,6 +90,7 @@ export default function SignUp({
 					console.log('response', data)
 					Cookies.set('userToken', data.token, { expires: 1, secure: true })
 					setToken(data.token)
+					setDisplaySignUp(false)
 				} catch (e) {
 					const error = e as AxiosError
 
@@ -128,17 +129,30 @@ export default function SignUp({
 						name="name"
 						value={name}
 						onChange={handleNameChange}
-						className=" bg-white   border-b-2 leading-8 my-4 flex w-full text-blue-vinted"
+						className=" bg-white   border-b-2 leading-8  flex w-full text-blue-vinted"
 					/>
-					<div className="flex justify-center items-center">
+					<div
+						className={
+							avatar
+								? 'flex justify-around items-center '
+								: 'flex justify-center items-center '
+						}
+					>
 						<label
-							className="text-gray-400 w-1/2 border-2 border-solid border-gray-300 flex justify-center items-center"
+							className="text-gray-400 hover:text-white w-1/2 border-2 border-solid border-gray-300 flex justify-center items-center hover:bg-blue-vinted/50"
 							htmlFor="avatar"
 						>
 							Avatar
 						</label>
+						{avatar && (
+							<img
+								className="h-8 w-8 rounded-full "
+								src={URL.createObjectURL(avatar)}
+								alt="avatar"
+							/>
+						)}
 						<input
-							className=" bg-white  leading-8 my-4 flex  text-blue-vinted w-0"
+							className=" bg-white  leading-8  flex  text-blue-vinted w-0"
 							type="file"
 							id="avatar"
 							name="avatar"
@@ -152,7 +166,7 @@ export default function SignUp({
 						name="email"
 						value={email}
 						onChange={handleEmailChange}
-						className=" bg-white leading-8 border-b-2 border-red-200  my-4 flex w-full text-blue-vinted"
+						className=" bg-white leading-8 border-b-2 border-red-200 flex w-full text-blue-vinted"
 					/>
 
 					<input
@@ -168,10 +182,10 @@ export default function SignUp({
 								: ''
 						}  ${
 							shake ? 'shake' : ''
-						}  bg-white  border-b-2 rounded w-full leading-8 my-4 `}
+						}  bg-white  border-b-2 rounded w-full leading-8 `}
 					/>
 					<div className="flex flex-col">
-						<div className="flex  my-4 text-gray-500">
+						<div className="flex   text-gray-500">
 							<input
 								className="mr-4 flex "
 								type="checkbox"
@@ -188,10 +202,10 @@ export default function SignUp({
 						</div>
 					</div>
 
-					<p className="text-red-500 my-2 sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
+					<p className="text-red-500  sm:text-base md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
 						{alert}
 					</p>
-					<button className="mt-8 mb-4 border-none rounded bg-blue-vinted text-white py-2 w-full">
+					<button className=" mb-4 border-none rounded bg-blue-vinted text-white py-2 w-full">
 						S'inscrire
 					</button>
 					<button

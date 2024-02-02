@@ -20,9 +20,16 @@ const OfferPublish = ({ token, setDisplayLogin }: OfferPublishProps) => {
 	const [price, setPrice] = useState('')
 	const [image, setImage] = useState<File | null>(null)
 	const [subbmited, setSubmitted] = useState(false)
+	const [validate, setValidate] = useState(false)
 
 	useEffect(() => {
-		if (subbmited) {
+		if (
+			subbmited &&
+			title !== '' &&
+			description !== '' &&
+			image !== null &&
+			price !== ''
+		) {
 			const fetchData = async () => {
 				const formData = new FormData()
 
@@ -50,6 +57,16 @@ const OfferPublish = ({ token, setDisplayLogin }: OfferPublishProps) => {
 						}
 					)
 					console.log(data)
+					setTitle('')
+					setDescription('')
+					setBrand('')
+					setSize('')
+					setColor('')
+					setStat('')
+					setWhere('')
+					setPrice('')
+					setImage(null)
+					setValidate(true)
 				} catch (e) {
 					const error = e as AxiosError
 
@@ -147,166 +164,191 @@ const OfferPublish = ({ token, setDisplayLogin }: OfferPublishProps) => {
 		setSubmitted(true)
 		setTimeout(() => {
 			setSubmitted(false)
-		}, 10)
+			setValidate(false)
+		}, 3000)
 	}
 
 	return (
-		<div className="bg-gray-100 ">
-			<form
-				onSubmit={handleSubmit}
-				className="max-md:w-11/12 md:w-5/6 m-auto flex flex-col h-[85vh] justify-evenly"
-			>
-				<div className="h-[5%] font-bold ">Vends ton article</div>
-				<div className="bg-white h-[20%] flex justify-center items-center">
-					<label
-						className="text-blue-vinted w-1/2 border-2 border-solid border-blue-vinted flex justify-center items-center hover:cursor-pointer hover:bg-blue-vinted/50"
-						htmlFor="image"
+		<section>
+			{subbmited ? (
+				<div className="flex justify-center items-center border border-solid h-[80vh] text-3xl">
+					{validate
+						? 'Votre annonce est bien valider !'
+						: 'En cours de traitement'}
+				</div>
+			) : (
+				<div className="bg-gray-100 ">
+					<form
+						onSubmit={handleSubmit}
+						className="max-md:w-11/12 md:w-5/6 m-auto flex flex-col h-[85vh] justify-evenly"
 					>
-						{' '}
-						Ajouter une photo
-					</label>
-					<input
-						className=" bg-white  leading-8 my-4 flex  text-blue-vinted w-0"
-						type="file"
-						name="image"
-						id="image"
-						onChange={handleImageChange}
-					/>
-				</div>
-				<div className="bg-white h-[20%] flex flex-col">
-					<div className="flex w-full h-1/3 border-solid border-b border-gray-200">
-						<label htmlFor="title" className="w-1/2 items-center flex p-3">
-							Titre
-						</label>
-						<input
-							className="w-1/2 placeholder:underline-offset-2 placeholder:underline"
-							placeholder="ex: Chemise Sézane verte"
-							id="title"
-							type="text"
-							name="title"
-							value={title}
-							onChange={handleTitleChange}
-						/>
-					</div>
-
-					<div className="flex w-full h-2/3 ">
-						<label htmlFor="description" className="w-1/2 p-3">
-							Décris ton acticle
-						</label>
-						<textarea
-							className="w-1/2 placeholder:underline-offset-2 placeholder:underline"
-							placeholder="ex: Portée quelquefois, taille correctement"
-							id="description"
-							name="description"
-							value={description}
-							onChange={handleDescriptionChange}
-						/>
-					</div>
-				</div>
-				<div className="bg-white h-[30%] ">
-					<div className="flex w-full h-1/5 border-solid border-b border-gray-200">
-						<label htmlFor="brand" className="w-1/2 items-center flex p-3">
-							Marque
-						</label>
-						<input
-							className="w-1/2 placeholder:underline-offset-2 placeholder:underline"
-							placeholder="ex: Zara"
-							id="brand"
-							type="text"
-							name="brand"
-							value={brand}
-							onChange={handleBrandChange}
-						/>
-					</div>
-					<div className="flex w-full h-1/5 border-solid border-b border-gray-200">
-						<label htmlFor="size" className="w-1/2 items-center flex p-3">
-							Taille
-						</label>
-						<input
-							className="w-1/2 placeholder:underline-offset-2 placeholder:underline"
-							placeholder="ex: L / 40 / 12"
-							id="size"
-							type="text"
-							name="size"
-							value={size}
-							onChange={handleSizeChange}
-						/>
-					</div>
-					<div className="flex w-full h-1/5 border-solid border-b border-gray-200">
-						<label htmlFor="color" className="w-1/2 items-center flex p-3">
-							Couleur
-						</label>
-						<input
-							className="w-1/2 placeholder:underline-offset-2 placeholder:underline"
-							placeholder="ex: Fushia"
-							id="color"
-							type="text"
-							name="color"
-							value={color}
-							onChange={handleColorChange}
-						/>
-					</div>
-					<div className="flex w-full h-1/5 border-solid border-b border-gray-200">
-						<label htmlFor="stat" className="w-1/2 items-center flex p-3">
-							Etat
-						</label>
-						<input
-							className="w-1/2 placeholder:underline-offset-2 placeholder:underline"
-							placeholder="ex: Neuve avec étiquette"
-							id="stat"
-							type="text"
-							name="stat"
-							value={stat}
-							onChange={handleStatChange}
-						/>
-					</div>
-					<div className="flex w-full h-1/5 border-solid border-b border-gray-200">
-						<label htmlFor="where" className="w-1/2 items-center flex p-3">
-							Lieu
-						</label>
-						<input
-							className="w-1/2 placeholder:underline-offset-2 placeholder:underline"
-							placeholder="ex: Paris"
-							id="where"
-							type="text"
-							name="where"
-							value={where}
-							onChange={handleWhereChange}
-						/>
-					</div>
-				</div>
-				<div className="bg-white h-[10%] ">
-					<div className="flex w-full h-1/3 ">
-						<label htmlFor="price" className="w-1/2 items-center flex p-3">
-							Prix
-						</label>
-						<input
-							className="w-1/2 placeholder:underline-offset-2 placeholder:underline"
-							placeholder="1.0"
-							step="0.01"
-							min="0"
-							id="price"
-							type="number"
-							name="price"
-							value={price}
-							onChange={handlePriceChange}
-						/>
-					</div>
-					<div className="flex w-full h-2/3">
-						<label className="w-1/2 items-center flex p-3"></label>
-						<div className="w-1/2 flex items-center">
-							<input type="checkbox" />
-							<div className="px-2">Je suis intéressé(e) par les échanges</div>
+						<div className="h-[5%] font-bold ">Vends ton article</div>
+						<div
+							className={
+								image
+									? 'bg-white h-[20%] flex justify-around items-center'
+									: 'bg-white h-[20%] flex justify-center items-center'
+							}
+						>
+							<label
+								className="text-blue-vinted w-1/2 border-2 border-solid border-blue-vinted flex justify-center items-center hover:cursor-pointer hover:bg-blue-vinted/50"
+								htmlFor="image"
+							>
+								Ajouter une photo
+							</label>
+							<input
+								className=" bg-white  leading-8 my-4 flex  text-blue-vinted w-0"
+								type="file"
+								name="image"
+								id="image"
+								onChange={handleImageChange}
+							/>
+							{image && (
+								<img
+									className="h-3/4"
+									src={URL.createObjectURL(image)}
+									alt="avatar"
+								/>
+							)}
 						</div>
-					</div>
+						<div className="bg-white h-[20%] flex flex-col">
+							<div className="flex w-full h-1/3 border-solid border-b border-gray-200">
+								<label htmlFor="title" className="w-1/2 items-center flex p-3">
+									Titre
+								</label>
+								<input
+									className="w-1/2 placeholder:underline-offset-2 placeholder:underline"
+									placeholder="ex: Chemise Sézane verte"
+									id="title"
+									type="text"
+									name="title"
+									value={title}
+									onChange={handleTitleChange}
+								/>
+							</div>
+
+							<div className="flex w-full h-2/3 ">
+								<label htmlFor="description" className="w-1/2 p-3">
+									Décris ton acticle
+								</label>
+								<textarea
+									className="w-1/2 placeholder:underline-offset-2 placeholder:underline"
+									placeholder="ex: Portée quelquefois, taille correctement"
+									id="description"
+									name="description"
+									value={description}
+									onChange={handleDescriptionChange}
+								/>
+							</div>
+						</div>
+						<div className="bg-white h-[30%] ">
+							<div className="flex w-full h-1/5 border-solid border-b border-gray-200">
+								<label htmlFor="brand" className="w-1/2 items-center flex p-3">
+									Marque
+								</label>
+								<input
+									className="w-1/2 placeholder:underline-offset-2 placeholder:underline"
+									placeholder="ex: Zara"
+									id="brand"
+									type="text"
+									name="brand"
+									value={brand}
+									onChange={handleBrandChange}
+								/>
+							</div>
+							<div className="flex w-full h-1/5 border-solid border-b border-gray-200">
+								<label htmlFor="size" className="w-1/2 items-center flex p-3">
+									Taille
+								</label>
+								<input
+									className="w-1/2 placeholder:underline-offset-2 placeholder:underline"
+									placeholder="ex: L / 40 / 12"
+									id="size"
+									type="text"
+									name="size"
+									value={size}
+									onChange={handleSizeChange}
+								/>
+							</div>
+							<div className="flex w-full h-1/5 border-solid border-b border-gray-200">
+								<label htmlFor="color" className="w-1/2 items-center flex p-3">
+									Couleur
+								</label>
+								<input
+									className="w-1/2 placeholder:underline-offset-2 placeholder:underline"
+									placeholder="ex: Fushia"
+									id="color"
+									type="text"
+									name="color"
+									value={color}
+									onChange={handleColorChange}
+								/>
+							</div>
+							<div className="flex w-full h-1/5 border-solid border-b border-gray-200">
+								<label htmlFor="stat" className="w-1/2 items-center flex p-3">
+									Etat
+								</label>
+								<input
+									className="w-1/2 placeholder:underline-offset-2 placeholder:underline"
+									placeholder="ex: Neuve avec étiquette"
+									id="stat"
+									type="text"
+									name="stat"
+									value={stat}
+									onChange={handleStatChange}
+								/>
+							</div>
+							<div className="flex w-full h-1/5 border-solid border-b border-gray-200">
+								<label htmlFor="where" className="w-1/2 items-center flex p-3">
+									Lieu
+								</label>
+								<input
+									className="w-1/2 placeholder:underline-offset-2 placeholder:underline"
+									placeholder="ex: Paris"
+									id="where"
+									type="text"
+									name="where"
+									value={where}
+									onChange={handleWhereChange}
+								/>
+							</div>
+						</div>
+						<div className="bg-white h-[10%] ">
+							<div className="flex w-full h-1/3 ">
+								<label htmlFor="price" className="w-1/2 items-center flex p-3">
+									Prix
+								</label>
+								<input
+									className="w-1/2 placeholder:underline-offset-2 placeholder:underline"
+									placeholder="1.0"
+									step="0.01"
+									min="0"
+									id="price"
+									type="number"
+									name="price"
+									value={price}
+									onChange={handlePriceChange}
+								/>
+							</div>
+							<div className="flex w-full h-2/3">
+								<label className="w-1/2 items-center flex p-3"></label>
+								<div className="w-1/2 flex items-center">
+									<input type="checkbox" />
+									<div className="px-2">
+										Je suis intéressé(e) par les échanges
+									</div>
+								</div>
+							</div>
+						</div>
+						<div className="flex justify-end">
+							<button className="flex justify-center bg-blue-vinted w-1/12 items-center rounded text-white">
+								Ajouter
+							</button>
+						</div>
+					</form>
 				</div>
-				<div className="flex justify-end">
-					<button className="flex justify-center bg-blue-vinted w-1/12 items-center rounded text-white">
-						Ajouter
-					</button>
-				</div>
-			</form>
-		</div>
+			)}
+		</section>
 	)
 }
 
