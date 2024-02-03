@@ -121,7 +121,7 @@ export default function SignUp({
 		<>
 			<section className={layoutSignUp}>
 			<div className="w-full h-[0%] flex justify-end">
-				<button onClick={() => setDisplayLogin(false)} className="mx-4">
+				<button onClick={() => setDisplaySignUp(false)} className="mx-4">
 					✖️
 				</button>
 			</div>
@@ -151,7 +151,7 @@ export default function SignUp({
 						</label>
 						{avatar && (
 							<img
-								className="h-8 w-8 rounded-full "
+								className="h-8 w-8 rounded-full object-cover "
 								src={URL.createObjectURL(avatar)}
 								alt="avatar"
 							/>
