@@ -33,7 +33,7 @@ const Offers = ({ data }: dataProps) => {
 					>
 						<div className=" flex items-center py-1">
 							<img
-								className="p-1 w-10 h-10 object-fill rounded-full "
+								className="p-1 w-10 h-10 object-cover rounded-full "
 								src={elem.owner?.account?.avatar?.secure_url}
 							/>
 							<div className="p-1 text-md flex flex-shrink-0 ">
