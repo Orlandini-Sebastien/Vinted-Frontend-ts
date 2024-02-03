@@ -106,7 +106,7 @@ const OfferPage = () => {
 
 					<div className=" flex items-center h-[10%]">
 						<img
-							className="p-1 w-10 h-10 object-fill rounded-full"
+							className="p-1 w-10 h-10 object-cover rounded-full"
 							src={offer.owner?.account?.avatar?.secure_url}
 						/>
 						<div className="p-1 text-xs">{offer.owner.account?.username}</div>
