@@ -40,16 +40,14 @@ const HomePage = ({
 	}
 
 	return isLoading ? (
-		<p className="h-[80vh] w-full flex justify-center items-center">
+		<p className="h-[85vh] w-full flex justify-center items-center">
 			Chargement en cours ...
 		</p>
 	) : (
 		<div
-			className={
-				displayLogin || displaySignUp
-					? 'relative h-scree2/3 overflow-hidden '
-					: 'relative h-scree2/3 '
-			}
+			className={`${
+				(displayLogin || displaySignUp) && 'overflow-hidden'
+			} relative h-[75vh] `}
 		>
 			<img className="h-full w-full object-cover" src={hero} alt="hero" />
 			<img className="absolute w-full bottom-0" src={tear} alt="tear" />

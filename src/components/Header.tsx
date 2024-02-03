@@ -60,7 +60,7 @@ const Header = ({
 	}
 
 	return (
-		<header className="bg-white h-[15vh] flex ">
+		<header className="bg-white h-[15vh] flex max-md:h-[20vh] ">
 			<header className="flex justify-center  max-md:flex-wrap lg:w-4/5 max-md:w-11/12 m-auto items-center ">
 				<div className="lg:w-1/2 max-md:w-full   flex-row flex relative">
 					<Link to={`/`}>
@@ -82,12 +82,12 @@ const Header = ({
 						onClick={() => {
 							setHiddeSort(!hiddeSort)
 						}}
-						className="bg-white hover:bg-blue-vinted/50 rounded absolute right-4 top-1/4  border-2 border-solid hover:border-blue-vinted border-gray-500"
+						className="bg-white hover:bg-blue-vinted/50 rounded absolute right-4 top-[22.5%]  border border-solid hover:border-blue-vinted border-gray-300"
 					>
 						Trier par ⬇️
 					</button>
 
-					<div className={hiddeSort ? 'hidden' : ''}>
+					<div className={`${hiddeSort ? 'hidden' : ''} z-10`}>
 						<div className="bg-white p-2 my-2 absolute max-lg:z-20 max-md:right-4 md:-right-12 top-3/4 border border-solid border-gray-400">
 							<div className="flex justify-between">
 								Prix décroissant

@@ -78,7 +78,14 @@ const Login = ({
 	console.log('connection>>>', connection)
 	return (
 		<div className={layout}>
+			<div className="w-full flex h-[0%] justify-end">
+				<button onClick={() => setDisplayLogin(false)} className="mx-4">
+					✖️
+				</button>
+			</div>
+
 			<div className="text-lg text-gray-600 h-1/6 "> Se connecter</div>
+
 			<form className={styleForm} onSubmit={handleSubmit}>
 				<div className="h-1/2 flex flex-col justify-center">
 					<input

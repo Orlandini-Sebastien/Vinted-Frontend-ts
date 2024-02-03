@@ -120,6 +120,11 @@ export default function SignUp({
 	return (
 		<>
 			<section className={layoutSignUp}>
+			<div className="w-full h-[0%] flex justify-end">
+				<button onClick={() => setDisplayLogin(false)} className="mx-4">
+					✖️
+				</button>
+			</div>
 				<div className="text-lg text-gray-600"> S'inscrire</div>
 
 				<form onSubmit={handleSubmit} className={styleSignUp}>
