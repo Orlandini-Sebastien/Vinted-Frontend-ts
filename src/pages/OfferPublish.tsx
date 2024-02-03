@@ -341,7 +341,7 @@ const OfferPublish = ({ token, setDisplayLogin }: OfferPublishProps) => {
 							</div>
 						</div>
 						<div className="flex justify-end">
-							<button className="flex justify-center bg-blue-vinted w-1/12 items-center rounded text-white">
+							<button className="flex justify-center bg-blue-vinted w-20 items-center rounded text-white">
 								Ajouter
 							</button>
 						</div>
