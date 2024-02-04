@@ -53,12 +53,12 @@ const OfferPage = () => {
 	return isLoading ? (
 		<p>Is Loading</p>
 	) : (
-		<div className="lg:h-[85vh] bg-[#EBEDEE]">
+		<div className="lg:h-[85vh]  bg-[#EBEDEE]">
 			<div
 				className=" lg:justify-around  flex items-center
 			max-lg:flex-col  h-full "
 			>
-				<div className="lg:my-20 max-lg:my-8 max-lg:w-[70%] lg:w-[40%] h-[70%]   ">
+				<div className="lg:my-20 max-lg:my-8 max-lg:w-[70%] lg:w-[40%] h-[70%] max-lg:py-4   ">
 					<img
 						className="w-full h-full object-cover "
 						src={offer.product_image}
@@ -66,7 +66,7 @@ const OfferPage = () => {
 					/>
 				</div>
 
-				<div className="flex  flex-col justify-evenly  max-lg:w-[70%]  px-2 lg:w-[40%] h-[70%]    bg-white ">
+				<div className="flex  flex-col justify-evenly  max-lg:w-[70%] max-lg:my-8  px-2 lg:w-[40%] h-[70%] max-lg:py-4    bg-white ">
 					<div className="text-2xl h-[10%]">{offer.product_price} €</div>
 					<div className="h-[30%] flex flex-col justify-evenly">
 						<div className="flex justify-between ">

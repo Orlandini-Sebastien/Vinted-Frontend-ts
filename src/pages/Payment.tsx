@@ -30,7 +30,7 @@ const Payment = ({ token, setDisplayLogin }: PaymentType) => {
 						Authorization: `Bearer ${token}`,
 					},
 					method: 'POST',
-					url: `https://site--backend-vinted--cfvhczrj5zks.code.run/offer/payment`,
+					url: `https://site--backend-vinted--cfvhczrj5zks.code.run/payment`,
 				})
 
 				console.log(data)
@@ -39,7 +39,7 @@ const Payment = ({ token, setDisplayLogin }: PaymentType) => {
 
 				console.log('catch app>>>', error.response)
 				if (error.response?.status === 401) {
-					navigate('/', { state: { path: 'offer/publish' } })
+					navigate('/', { state: { path: 'payment' } })
 					setDisplayLogin(true)
 				}
 			}
@@ -50,7 +50,7 @@ const Payment = ({ token, setDisplayLogin }: PaymentType) => {
 	return (
 		<div className="h-[85vh] bg-[#EBEDEE]  ">
 			<div className="flex justify-center  items-center  h-full">
-				<div className="max-lg:w-[70%] p-4 lg:w-[40%] lg:h-[70%]  bg-white flex flex-col justify-around  ">
+				<div className="max-lg:w-[70%] p-4 lg:w-[40%] h-[70%]  bg-white flex flex-col justify-around  ">
 					<div className="h-[10%] text-gray-400">Résumé de la commande</div>
 					<div className="h-[20%] text-gray-500">
 						<div className="flex justify-between">

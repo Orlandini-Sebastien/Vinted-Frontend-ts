@@ -42,7 +42,7 @@ const CheckoutForm = () => {
 			{!completed ? (
 				<form className='h-[20%] flex flex-col justify-around' onSubmit={handleSubmit}>
 					<CardElement />
-					<button className="  w-full bg-green-500 rounded text-white" type="submit">Valider</button>
+					<button className="h-[40%]  w-full bg-green-500 rounded text-white" type="submit">Valider</button>
 				</form>
 			) : (
 				<span>Paiement effectué ! </span>
