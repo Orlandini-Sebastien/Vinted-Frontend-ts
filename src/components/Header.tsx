@@ -86,7 +86,7 @@ const Header = ({
 						}}
 						className="bg-white hover:bg-blue-vinted/50 rounded absolute right-4 top-[22.5%]  border border-solid hover:border-blue-vinted border-gray-300"
 					>
-						Tirer par ⬇️
+						Trier par ⬇️
 					</button>
 
 					<div className={`${hiddeSort ? 'hidden' : ''} z-10`}>

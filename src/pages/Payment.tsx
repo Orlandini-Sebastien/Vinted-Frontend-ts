@@ -17,8 +17,8 @@ type PaymentType = {
 
 const Payment = ({ token, setDisplayLogin }: PaymentType) => {
 	const data = useLocation()
-	const protection_acheteur: number = 0.4
-	const frais_port: number = 0.8
+	const protection_acheteur: number = 0.40
+	const frais_port: number = 0.80
 	console.log(data.state.price, data.state.product_name)
 	const navigate = useNavigate()
 
@@ -54,40 +54,38 @@ const Payment = ({ token, setDisplayLogin }: PaymentType) => {
 					<div className="h-[10%] text-gray-400">Résumé de la commande</div>
 					<div className="h-[20%] text-gray-500">
 						<div className="flex justify-between">
-							Commande <span> {data.state.price} €</span>
+							Commande <span> {data.state.price.toFixed(2)} €</span>
 						</div>
 						<div className="flex justify-between">
 							Frais de protection acheteurs
-							<span> {protection_acheteur} € </span>
+							<span> {protection_acheteur.toFixed(2)} € </span>
 						</div>
 						<div className="flex justify-between  ">
-							Frais de port <span> {frais_port} € </span>
+							Frais de port <span> {frais_port.toFixed(2)} € </span>
 						</div>
 					</div>
 
 					<div className="h-[20%] font-bold flex justify-between items-center">
 						Total
-						<span>{data.state.price + protection_acheteur + frais_port} €</span>
+						<span>{(data.state.price + protection_acheteur + frais_port).toFixed(2)} €</span>
 					</div>
 					<div className="h-[20%]">
 						Il ne vous reste plus qu'une étape pour vous offrir{' '}
-						<span className="font-bold ">{data.state.product_name}</span>. Vous
-						allez payer
-						<span className="font-bold">
-							{data.state.price + protection_acheteur + frais_port} €
+						<span className="font-bold px-1 ">{data.state.product_name}</span>. Vous
+						allez payer 
+						<span className="font-bold px-1"> 
+						{(data.state.price + protection_acheteur + frais_port).toFixed(2)} €
 						</span>
 						(frais de protection et frais de port inclus).
 					</div>
 
-					<div className="h-[10%]">Viens mettre ta carte</div>
+				
 
 					<Elements stripe={stripePromise}>
 						<CheckoutForm />
 					</Elements>
 
-					<button className="h-[10%] bg-green-500 rounded text-white">
-						Payer
-					</button>
+				
 				</div>
 			</div>
 		</div>
