@@ -4,6 +4,7 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 import { useLocation } from 'react-router'
 import { useNavigate } from 'react-router-dom'
+import { AxiosError } from 'axios'
 
 type loginProps = {
 	layout: string
@@ -74,12 +75,11 @@ const Login = ({
 
 			} catch (e) {
 				console.log('error >>>>', e)
+				const error = e as AxiosError
 
-				if (typeof e === 'string') {
-					e.toUpperCase() // works, `e` narrowed to string
-					setAlert(e)
-				} else if (e instanceof Error) {
-					e.message // works, `e` narrowed to Error
+				console.log('catch app>>>', error.response?.status)
+				if (error.response?.status === 401) {
+					setAlert("L'email n'existe pas")
 				}
 			}
 		}
