@@ -39,7 +39,7 @@ const Payment = ({ token, setDisplayLogin }: PaymentType) => {
 
 				console.log('catch app>>>', error.response)
 				if (error.response?.status === 401) {
-					navigate('/', { state: { path: 'payment' } })
+					navigate('/', { state: { path: 'payment' , price : data.state.price , product_name : data.state.product_name } })
 					setDisplayLogin(true)
 				}
 			}
