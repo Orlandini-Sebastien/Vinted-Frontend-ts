@@ -8,12 +8,14 @@ import OfferPage from './pages/OfferPage'
 import ModalLogin from './components/ModalLogin'
 import ModalSignUp from './components/ModalSignUp'
 import OfferPublish from './pages/OfferPublish'
+import Payment from './pages/Payment'
 
 function App() {
-	const [token, setToken] = useState(Cookies.get('userToken') || '') // on stoke le token dans useState
+	const [token, setToken] = useState(Cookies.get('userToken') || '')
 	const [displayLogin, setDisplayLogin] = useState(false)
 	const [displaySignUp, setDisplaySignUp] = useState(false)
 	const [data, setData] = useState([])
+
 	return (
 		<Router>
 			<Header
@@ -43,6 +45,7 @@ function App() {
 						<OfferPublish setDisplayLogin={setDisplayLogin} token={token} />
 					}
 				/>
+				<Route path="/payment" element={ <Payment  setDisplayLogin={setDisplayLogin} token={token} />} />
 			</Routes>
 
 			{displayLogin && (

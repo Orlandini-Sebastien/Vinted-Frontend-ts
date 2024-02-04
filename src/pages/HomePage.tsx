@@ -5,6 +5,7 @@ import hero from '../assets/banner-tablets-up-afe3d19776592a72f165c1bb93fd02c552
 import tear from '../assets/tear.884480420945b3afd77b44a6c5f98567.svg'
 import { Link } from 'react-router-dom'
 
+
 type HomePageProps = {
 	displayLogin: boolean
 	displaySignUp: boolean
@@ -19,6 +20,7 @@ const HomePage = ({
 	displaySignUp,
 }: HomePageProps) => {
 	const [isLoading, setIsLoading] = useState(true)
+
 
 	useEffect(() => {
 		const fetchData = async () => {

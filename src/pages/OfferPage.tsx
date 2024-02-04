@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+
 
 const OfferPage = () => {
 	const { id } = useParams()
@@ -112,9 +114,13 @@ const OfferPage = () => {
 						<div className="p-1 text-xs">{offer.owner.account?.username}</div>
 					</div>
 
-					<button className="w-full bg-blue-vinted rounded-md text-white h-[10%] ">
+					<Link
+						to="/payment"
+						className="w-full bg-blue-vinted rounded-md text-white h-[10%] flex justify-center items-center "
+						state={{price : offer.product_price , product_name : offer.product_name }}
+					>
 						Acheter
-					</button>
+					</Link>
 				</div>
 			</div>
 		</div>

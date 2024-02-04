@@ -2,6 +2,8 @@ import { ReactElement, useState } from 'react'
 
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import { useLocation } from 'react-router'
+import { useNavigate } from 'react-router-dom'
 
 type loginProps = {
 	layout: string
@@ -25,6 +27,11 @@ const Login = ({
 	const [shake, setShake] = useState(false)
 
 	const [connection, setConnection] = useState({})
+
+	
+	const location = useLocation()
+	const navigate = useNavigate()
+	console.log("location >>>",location.state)
 
 	const handleEmailChange = (
 		event: React.ChangeEvent<HTMLInputElement>
@@ -63,6 +70,8 @@ const Login = ({
 				Cookies.set('userToken', data.token, { expires: 1 })
 				setToken(data.token)
 				setDisplayLogin(false)
+				navigate(location.state.path)
+
 			} catch (e) {
 				console.log('error >>>>', e)
 

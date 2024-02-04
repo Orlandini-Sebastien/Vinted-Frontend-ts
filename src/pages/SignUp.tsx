@@ -4,6 +4,10 @@ import { ReactElement, useState } from 'react'
 
 import axios, { AxiosError } from 'axios'
 import Cookies from 'js-cookie'
+import { useLocation } from 'react-router'
+import { useNavigate } from 'react-router-dom'
+
+
 
 type SignUpProps = {
 	setToken: React.Dispatch<React.SetStateAction<string>>
@@ -25,9 +29,12 @@ export default function SignUp({
 	const [password, setPassword] = useState('')
 	const [newsletter, setNewsletter] = useState(false)
 	const [avatar, setAvatar] = useState<File | null>(null)
-
 	const [alert, setAlert] = useState('')
 	const [shake, setShake] = useState(false)
+	
+	const location = useLocation()
+	const navigate = useNavigate()
+	console.log("location >>>",location.state)
 
 	const handleNameChange = (
 		event: React.ChangeEvent<HTMLInputElement>
@@ -91,6 +98,7 @@ export default function SignUp({
 					Cookies.set('userToken', data.token, { expires: 1, secure: true })
 					setToken(data.token)
 					setDisplaySignUp(false)
+					if (location.state.path) navigate("/"+location.state.path)
 				} catch (e) {
 					const error = e as AxiosError
 
@@ -99,20 +107,6 @@ export default function SignUp({
 						setAlert("L'email est déjà enregistré")
 					}
 				}
-
-				/*   WORK
-					const { data } = await axios.post(
-						'https://site--backend-vinted--cfvhczrj5zks.code.run/user/signup',
-						{
-							username: name,
-							email: email,
-							password: password,
-							newsletter: newsletter,
-						}
-					)
-					console.log('response', data)
-					Cookies.set('userToken', data.token, { expires: 1, secure: true })
-					setToken(data.token)  */
 			}
 		}
 	}
@@ -120,11 +114,11 @@ export default function SignUp({
 	return (
 		<>
 			<section className={layoutSignUp}>
-			<div className="w-full h-[0%] flex justify-end">
-				<button onClick={() => setDisplaySignUp(false)} className="mx-4">
-					✖️
-				</button>
-			</div>
+				<div className="w-full h-[0%] flex justify-end">
+					<button onClick={() => setDisplaySignUp(false)} className="mx-4">
+						✖️
+					</button>
+				</div>
 				<div className="text-lg text-gray-600"> S'inscrire</div>
 
 				<form onSubmit={handleSubmit} className={styleSignUp}>

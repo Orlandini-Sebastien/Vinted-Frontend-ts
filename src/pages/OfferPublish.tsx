@@ -6,6 +6,7 @@ import { AxiosError } from 'axios'
 type OfferPublishProps = {
 	token: string
 	setDisplayLogin: React.Dispatch<React.SetStateAction<boolean>>
+	
 }
 
 const OfferPublish = ({ token, setDisplayLogin }: OfferPublishProps) => {
@@ -72,7 +73,7 @@ const OfferPublish = ({ token, setDisplayLogin }: OfferPublishProps) => {
 
 					console.log('catch app>>>', error.response)
 					if (error.response?.status === 401) {
-						navigate('/')
+						navigate("/", {state : {page : "OfferPublish"}} )
 						setDisplayLogin(true)
 					}
 				}
@@ -95,7 +96,7 @@ const OfferPublish = ({ token, setDisplayLogin }: OfferPublishProps) => {
 
 					console.log('catch app>>>', error.response)
 					if (error.response?.status === 401) {
-						navigate('/')
+						navigate("/", {state : {path : "offer/publish"}} )
 						setDisplayLogin(true)
 					}
 				}

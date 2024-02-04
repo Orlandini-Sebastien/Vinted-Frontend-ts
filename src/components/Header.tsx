@@ -6,6 +6,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
+
 type HeaderProps = {
 	token: string
 	setToken: React.Dispatch<React.SetStateAction<string>>
@@ -25,6 +26,7 @@ const Header = ({
 	const [hiddeSort, setHiddeSort] = useState(true)
 	const [croissant, setCroissant] = useState(false)
 	const navigate = useNavigate()
+
 
 	const handleSearchOffer = async (
 		event: React.ChangeEvent<HTMLInputElement>
