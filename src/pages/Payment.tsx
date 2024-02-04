@@ -86,7 +86,7 @@ const Payment = ({ token, setDisplayLogin }: PaymentType) => {
 					</Elements>
 
 					<button className="h-[10%] bg-green-500 rounded text-white">
-						Pay
+						Payer
 					</button>
 				</div>
 			</div>

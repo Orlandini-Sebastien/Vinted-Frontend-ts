@@ -10,6 +10,8 @@ import ModalSignUp from './components/ModalSignUp'
 import OfferPublish from './pages/OfferPublish'
 import Payment from './pages/Payment'
 
+
+
 function App() {
 	const [token, setToken] = useState(Cookies.get('userToken') || '')
 	const [displayLogin, setDisplayLogin] = useState(false)

@@ -58,7 +58,7 @@ const OfferPage = () => {
 				className=" lg:justify-around  flex items-center
 			max-lg:flex-col  h-full "
 			>
-				<div className="lg:my-20 max-lg:my-8 max-lg:w-[70%] lg:w-[40%] h-[70%]">
+				<div className="lg:my-20 max-lg:my-8 max-lg:w-[70%] lg:w-[40%] h-[70%]   ">
 					<img
 						className="w-full h-full object-cover "
 						src={offer.product_image}
@@ -66,7 +66,7 @@ const OfferPage = () => {
 					/>
 				</div>
 
-				<div className="flex  flex-col justify-evenly  max-lg:w-[70%]  px-2 lg:w-[40%] h-[70%]  bg-white ">
+				<div className="flex  flex-col justify-evenly  max-lg:w-[70%]  px-2 lg:w-[40%] h-[70%]    bg-white ">
 					<div className="text-2xl h-[10%]">{offer.product_price} €</div>
 					<div className="h-[30%] flex flex-col justify-evenly">
 						<div className="flex justify-between ">
@@ -101,7 +101,7 @@ const OfferPage = () => {
 						</div>
 					</div>
 
-					<div className="h-[30%] flex flex-col justify-center">
+					<div className="h-[30%] max-lg:h-[70%] flex flex-col justify-center">
 						<div className="text-gray-800 font-bold">{offer.product_name}</div>
 						<div className="text-gray-600">{offer.product_description}</div>
 					</div>
