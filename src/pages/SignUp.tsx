@@ -98,7 +98,7 @@ export default function SignUp({
 					Cookies.set('userToken', data.token, { expires: 1, secure: true })
 					setToken(data.token)
 					setDisplaySignUp(false)
-					if (location.state.path) navigate("/"+location.state.path)
+					if (location.state.path) navigate(location.state.path, { state: {  price : location.state.price , product_name : location.state.product_name } })
 				} catch (e) {
 					const error = e as AxiosError
 

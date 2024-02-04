@@ -70,7 +70,7 @@ const Login = ({
 				Cookies.set('userToken', data.token, { expires: 1 })
 				setToken(data.token)
 				setDisplayLogin(false)
-				navigate(location.state.path, { state: {  price : location.state.price , product_name : location.state.product_name } })
+				if (location.state.path)  navigate(location.state.path, { state: {  price : location.state.price , product_name : location.state.product_name } })
 
 			} catch (e) {
 				console.log('error >>>>', e)
