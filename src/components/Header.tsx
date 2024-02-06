@@ -149,7 +149,7 @@ const Header = ({
 								onClick={() => {
 									Cookies.remove('userToken')
 									setToken('')
-									navigate('/')
+									navigate("/")
 								}}
 							>
 								Se déconnecter
