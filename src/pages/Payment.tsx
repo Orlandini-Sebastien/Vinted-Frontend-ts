@@ -28,7 +28,7 @@ const Payment = ({ token, setDisplayLogin }: PaymentType) => {
 				const { data } = await axios.request({
 					headers: {
 						Authorization: `Bearer ${token}`,
-						'Access-Control-Allow-Origin' : 'https://thriving-medovik-6bc46e.netlify.app',
+						
 
 					},
 					method: 'POST',
