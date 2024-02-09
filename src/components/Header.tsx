@@ -62,8 +62,8 @@ const Header = ({
 	}
 
 	return (
-		<header className="bg-white h-[15vh] flex max-md:h-[20vh] ">
-			<header className="flex justify-center  max-md:flex-wrap lg:w-4/5 max-md:w-11/12 m-auto items-center ">
+		<header className="bg-white h-16 flex max-md:h-28 ">
+			<header className="flex justify-center  max-md:flex-wrap lg:w-4/5 max-md:w-11/12 m-auto items-center z-30 ">
 				<div className="lg:w-1/2 max-md:w-full   flex-row flex relative">
 					<Link to={`/`}>
 						<img
