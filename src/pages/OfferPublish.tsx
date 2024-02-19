@@ -47,7 +47,7 @@ const OfferPublish = ({ token, setDisplayLogin }: OfferPublishProps) => {
 
 				try {
 					const { data } = await axios.post(
-						'http://thriving-medovik-6bc46e.netlify.app/offer/publish',
+						'http://site--backend-vinted--cfvhczrj5zks.code.run/offer/publish',
 						formData,
 						{
 							headers: {
@@ -86,7 +86,7 @@ const OfferPublish = ({ token, setDisplayLogin }: OfferPublishProps) => {
 							Authorization: `Bearer ${token}`,
 						},
 						method: 'POST',
-						url: `http://thriving-medovik-6bc46e.netlify.app/offer/publish`,
+						url: `http://site--backend-vinted--cfvhczrj5zks.code.run/offer/publish`,
 					})
 
 					console.log(data)

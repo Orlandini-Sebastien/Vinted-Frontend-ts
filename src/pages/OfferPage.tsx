@@ -36,7 +36,7 @@ const OfferPage = () => {
 		const fetchData = async () => {
 			try {
 				const { data } = await axios.get(
-					`http://thriving-medovik-6bc46e.netlify.app/offer/${id}`
+					`http://site--backend-vinted--cfvhczrj5zks.code.run/offer/${id}`
 				)
 				console.log('offer data >>>', data)
 				setOffer(data)

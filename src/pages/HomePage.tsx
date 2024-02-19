@@ -24,7 +24,7 @@ const HomePage = ({
 		const fetchData = async () => {
 			try {
 				const response = await axios.get(
-					'http://thriving-medovik-6bc46e.netlify.app/offers?sort=asc'
+					'http://site--backend-vinted--cfvhczrj5zks.code.run/offers?sort=asc'
 				)
 				setData(response.data)
 			} catch (error) {

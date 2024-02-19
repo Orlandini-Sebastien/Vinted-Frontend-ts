@@ -32,7 +32,7 @@ const Payment = ({ token, setDisplayLogin }: PaymentType) => {
 						Authorization: `Bearer ${token}`,
 					},
 					method: 'GET',
-					url: `http://thriving-medovik-6bc46e.netlify.app/pay`,
+					url: `http://site--backend-vinted--cfvhczrj5zks.code.run/pay`,
 				})
 
 				console.log(data)

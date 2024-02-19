@@ -62,7 +62,7 @@ const Login = ({
 				const {
 					data,
 				} = await axios.post(
-					'http://thriving-medovik-6bc46e.netlify.app/user/login',
+					'http://site--backend-vinted--cfvhczrj5zks.code.run/user/login',
 					{ email: email, password: password }
 				)
 				console.log('response>>>>>>>', data)

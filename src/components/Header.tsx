@@ -35,7 +35,7 @@ const Header = ({
 
 		try {
 			const response = await axios.get(
-				`http://thriving-medovik-6bc46e.netlify.app/offers?sort=${
+				`http://site--backend-vinted--cfvhczrj5zks.code.run/offers?sort=${
 					croissant ? 'asc' : 'desc'
 				}&product_name=${value}`
 			)
@@ -48,7 +48,7 @@ const Header = ({
 	const handleSort = async () => {
 		try {
 			const response = await axios.get(
-				`http://thriving-medovik-6bc46e.netlify.app/offers?sort=${
+				`http://site--backend-vinted--cfvhczrj5zks.code.run/offers?sort=${
 					croissant ? 'asc' : 'desc'
 				}`
 			)

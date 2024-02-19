@@ -24,7 +24,7 @@ const CheckoutForm = () => {
 					if (stripeResponse.token !== undefined) {
 						const stripeToken = stripeResponse.token.id
 						const response = await axios.post(
-							'http://thriving-medovik-6bc46e.netlify.app/payment',
+							'http://site--backend-vinted--cfvhczrj5zks.code.run/payment',
 							{
 								stripeToken,
 							}
