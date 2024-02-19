@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-
 const OfferPage = () => {
 	const { id } = useParams()
 
@@ -37,7 +36,7 @@ const OfferPage = () => {
 		const fetchData = async () => {
 			try {
 				const { data } = await axios.get(
-					`https://site--backend-vinted--cfvhczrj5zks.code.run/offer/${id}`
+					`http://thriving-medovik-6bc46e.netlify.app/offer/${id}`
 				)
 				console.log('offer data >>>', data)
 				setOffer(data)
@@ -117,7 +116,10 @@ const OfferPage = () => {
 					<Link
 						to="/payment"
 						className="w-full bg-blue-vinted rounded-md text-white h-[10%] flex justify-center items-center "
-						state={{price : offer.product_price , product_name : offer.product_name }}
+						state={{
+							price: offer.product_price,
+							product_name: offer.product_name,
+						}}
 					>
 						Acheter
 					</Link>

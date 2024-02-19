@@ -7,8 +7,6 @@ import Cookies from 'js-cookie'
 import { useLocation } from 'react-router'
 import { useNavigate } from 'react-router-dom'
 
-
-
 type SignUpProps = {
 	setToken: React.Dispatch<React.SetStateAction<string>>
 	layoutSignUp: string
@@ -31,10 +29,10 @@ export default function SignUp({
 	const [avatar, setAvatar] = useState<File | null>(null)
 	const [alert, setAlert] = useState('')
 	const [shake, setShake] = useState(false)
-	
+
 	const location = useLocation()
 	const navigate = useNavigate()
-	console.log("location >>>",location.state)
+	console.log('location >>>', location.state)
 
 	const handleNameChange = (
 		event: React.ChangeEvent<HTMLInputElement>
@@ -91,14 +89,20 @@ export default function SignUp({
 
 				try {
 					const { data } = await axios.post(
-						'https://site--backend-vinted--cfvhczrj5zks.code.run/user/signup',
+						'http://thriving-medovik-6bc46e.netlify.app/user/signup',
 						formData
 					)
 					console.log('response', data)
 					Cookies.set('userToken', data.token, { expires: 1, secure: true })
 					setToken(data.token)
 					setDisplaySignUp(false)
-					if (location.state.path) navigate(location.state.path, { state: {  price : location.state.price , product_name : location.state.product_name } })
+					if (location.state.path)
+						navigate(location.state.path, {
+							state: {
+								price: location.state.price,
+								product_name: location.state.product_name,
+							},
+						})
 				} catch (e) {
 					const error = e as AxiosError
 

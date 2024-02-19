@@ -29,10 +29,9 @@ const Login = ({
 
 	const [connection, setConnection] = useState({})
 
-	
 	const location = useLocation()
 	const navigate = useNavigate()
-	console.log("location >>>",location.state)
+	console.log('location >>>', location.state)
 
 	const handleEmailChange = (
 		event: React.ChangeEvent<HTMLInputElement>
@@ -63,7 +62,7 @@ const Login = ({
 				const {
 					data,
 				} = await axios.post(
-					'https://site--backend-vinted--cfvhczrj5zks.code.run/user/login',
+					'http://thriving-medovik-6bc46e.netlify.app/user/login',
 					{ email: email, password: password }
 				)
 				console.log('response>>>>>>>', data)
@@ -71,8 +70,13 @@ const Login = ({
 				Cookies.set('userToken', data.token, { expires: 1 })
 				setToken(data.token)
 				setDisplayLogin(false)
-				if (location.state.path)  navigate(location.state.path, { state: {  price : location.state.price , product_name : location.state.product_name } })
-
+				if (location.state.path)
+					navigate(location.state.path, {
+						state: {
+							price: location.state.price,
+							product_name: location.state.product_name,
+						},
+					})
 			} catch (e) {
 				console.log('error >>>>', e)
 				const error = e as AxiosError

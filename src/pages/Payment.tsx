@@ -4,11 +4,13 @@ import axios from 'axios'
 import { AxiosError } from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
 import CheckoutForm from '../components/ChekoutForm'
 
-const stripePromise = loadStripe("pk_test_51Og3g0K49B9HgdPIZv3v5FNYGr48MyJx5x4xMoFMx2PvcbwHmVPlSBecoPBLbOGnnbedpekJ3m7bSJpSucrbPMU5000zwzlrT1");
+const stripePromise = loadStripe(
+	'pk_test_51Og3g0K49B9HgdPIZv3v5FNYGr48MyJx5x4xMoFMx2PvcbwHmVPlSBecoPBLbOGnnbedpekJ3m7bSJpSucrbPMU5000zwzlrT1'
+)
 
 type PaymentType = {
 	token: string
@@ -17,8 +19,8 @@ type PaymentType = {
 
 const Payment = ({ token, setDisplayLogin }: PaymentType) => {
 	const data = useLocation()
-	const protection_acheteur: number = 0.40
-	const frais_port: number = 0.80
+	const protection_acheteur: number = 0.4
+	const frais_port: number = 0.8
 	console.log(data.state.price, data.state.product_name)
 	const navigate = useNavigate()
 
@@ -28,11 +30,9 @@ const Payment = ({ token, setDisplayLogin }: PaymentType) => {
 				const { data } = await axios.request({
 					headers: {
 						Authorization: `Bearer ${token}`,
-						
-
 					},
-					method: 'POST',
-					url: `https://site--backend-vinted--cfvhczrj5zks.code.run/payment`,
+					method: 'GET',
+					url: `http://thriving-medovik-6bc46e.netlify.app/pay`,
 				})
 
 				console.log(data)
@@ -41,7 +41,13 @@ const Payment = ({ token, setDisplayLogin }: PaymentType) => {
 
 				console.log('catch app>>>', error.response)
 				if (error.response?.status === 401) {
-					navigate('/', { state: { path: 'payment' , price : data.state.price , product_name : data.state.product_name } })
+					navigate('/', {
+						state: {
+							path: 'pay',
+							price: data.state.price,
+							product_name: data.state.product_name,
+						},
+					})
 					setDisplayLogin(true)
 				}
 			}
@@ -69,25 +75,25 @@ const Payment = ({ token, setDisplayLogin }: PaymentType) => {
 
 					<div className="h-[20%] font-bold flex justify-between items-center">
 						Total
-						<span>{(data.state.price + protection_acheteur + frais_port).toFixed(2)} €</span>
+						<span>
+							{(data.state.price + protection_acheteur + frais_port).toFixed(2)}{' '}
+							€
+						</span>
 					</div>
 					<div className="h-[20%]">
 						Il ne vous reste plus qu'une étape pour vous offrir{' '}
-						<span className="font-bold px-1 ">{data.state.product_name}</span>. Vous
-						allez payer 
-						<span className="font-bold px-1"> 
-						{(data.state.price + protection_acheteur + frais_port).toFixed(2)} €
+						<span className="font-bold px-1 ">{data.state.product_name}</span>.
+						Vous allez payer
+						<span className="font-bold px-1">
+							{(data.state.price + protection_acheteur + frais_port).toFixed(2)}{' '}
+							€
 						</span>
 						(frais de protection et frais de port inclus).
 					</div>
 
-				
-
 					<Elements stripe={stripePromise}>
 						<CheckoutForm />
 					</Elements>
-
-				
 				</div>
 			</div>
 		</div>

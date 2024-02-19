@@ -5,7 +5,6 @@ import hero from '../assets/banner-tablets-up-afe3d19776592a72f165c1bb93fd02c552
 import tear from '../assets/tear.884480420945b3afd77b44a6c5f98567.svg'
 import { Link } from 'react-router-dom'
 
-
 type HomePageProps = {
 	displayLogin: boolean
 	displaySignUp: boolean
@@ -21,12 +20,11 @@ const HomePage = ({
 }: HomePageProps) => {
 	const [isLoading, setIsLoading] = useState(true)
 
-
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
 				const response = await axios.get(
-					'https://site--backend-vinted--cfvhczrj5zks.code.run/offers?sort=asc'
+					'http://thriving-medovik-6bc46e.netlify.app/offers?sort=asc'
 				)
 				setData(response.data)
 			} catch (error) {

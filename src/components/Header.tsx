@@ -6,7 +6,6 @@ import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-
 type HeaderProps = {
 	token: string
 	setToken: React.Dispatch<React.SetStateAction<string>>
@@ -27,7 +26,6 @@ const Header = ({
 	const [croissant, setCroissant] = useState(false)
 	const navigate = useNavigate()
 
-
 	const handleSearchOffer = async (
 		event: React.ChangeEvent<HTMLInputElement>
 	) => {
@@ -37,7 +35,7 @@ const Header = ({
 
 		try {
 			const response = await axios.get(
-				`https://site--backend-vinted--cfvhczrj5zks.code.run/offers?sort=${
+				`http://thriving-medovik-6bc46e.netlify.app/offers?sort=${
 					croissant ? 'asc' : 'desc'
 				}&product_name=${value}`
 			)
@@ -50,7 +48,7 @@ const Header = ({
 	const handleSort = async () => {
 		try {
 			const response = await axios.get(
-				`https://site--backend-vinted--cfvhczrj5zks.code.run/offers?sort=${
+				`http://thriving-medovik-6bc46e.netlify.app/offers?sort=${
 					croissant ? 'asc' : 'desc'
 				}`
 			)
@@ -149,7 +147,7 @@ const Header = ({
 								onClick={() => {
 									Cookies.remove('userToken')
 									setToken('')
-									navigate("/")
+									navigate('/')
 								}}
 							>
 								Se déconnecter

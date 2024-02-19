@@ -1,4 +1,3 @@
-
 import { useState } from 'react'
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js'
 
@@ -24,9 +23,12 @@ const CheckoutForm = () => {
 					console.log(stripeResponse)
 					if (stripeResponse.token !== undefined) {
 						const stripeToken = stripeResponse.token.id
-						const response = await axios.post('https://site--backend-vinted--cfvhczrj5zks.code.run/payment', {
-							stripeToken,
-						})
+						const response = await axios.post(
+							'http://thriving-medovik-6bc46e.netlify.app/payment',
+							{
+								stripeToken,
+							}
+						)
 						console.log(response.data)
 						if (response.data.status === 'succeeded') {
 							setCompleted(true)
@@ -40,9 +42,17 @@ const CheckoutForm = () => {
 	return (
 		<>
 			{!completed ? (
-				<form className='h-[20%] flex flex-col justify-around' onSubmit={handleSubmit}>
+				<form
+					className="h-[20%] flex flex-col justify-around"
+					onSubmit={handleSubmit}
+				>
 					<CardElement />
-					<button className="h-[40%]  w-full bg-green-500 rounded text-white" type="submit">Valider</button>
+					<button
+						className="h-[40%]  w-full bg-green-500 rounded text-white"
+						type="submit"
+					>
+						Valider
+					</button>
 				</form>
 			) : (
 				<span>Paiement effectué ! </span>

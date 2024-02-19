@@ -6,7 +6,6 @@ import { AxiosError } from 'axios'
 type OfferPublishProps = {
 	token: string
 	setDisplayLogin: React.Dispatch<React.SetStateAction<boolean>>
-	
 }
 
 const OfferPublish = ({ token, setDisplayLogin }: OfferPublishProps) => {
@@ -48,7 +47,7 @@ const OfferPublish = ({ token, setDisplayLogin }: OfferPublishProps) => {
 
 				try {
 					const { data } = await axios.post(
-						'https://site--backend-vinted--cfvhczrj5zks.code.run/offer/publish',
+						'http://thriving-medovik-6bc46e.netlify.app/offer/publish',
 						formData,
 						{
 							headers: {
@@ -73,7 +72,7 @@ const OfferPublish = ({ token, setDisplayLogin }: OfferPublishProps) => {
 
 					console.log('catch app>>>', error.response)
 					if (error.response?.status === 401) {
-						navigate("/", {state : {page : "OfferPublish"}} )
+						navigate('/', { state: { page: 'OfferPublish' } })
 						setDisplayLogin(true)
 					}
 				}
@@ -87,7 +86,7 @@ const OfferPublish = ({ token, setDisplayLogin }: OfferPublishProps) => {
 							Authorization: `Bearer ${token}`,
 						},
 						method: 'POST',
-						url: `https://site--backend-vinted--cfvhczrj5zks.code.run/offer/publish`,
+						url: `http://thriving-medovik-6bc46e.netlify.app/offer/publish`,
 					})
 
 					console.log(data)
@@ -96,7 +95,7 @@ const OfferPublish = ({ token, setDisplayLogin }: OfferPublishProps) => {
 
 					console.log('catch app>>>', error.response)
 					if (error.response?.status === 401) {
-						navigate("/", {state : {path : "offer/publish"}} )
+						navigate('/', { state: { path: 'offer/publish' } })
 						setDisplayLogin(true)
 					}
 				}
