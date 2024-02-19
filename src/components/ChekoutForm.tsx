@@ -24,7 +24,7 @@ const CheckoutForm = () => {
 					if (stripeResponse.token !== undefined) {
 						const stripeToken = stripeResponse.token.id
 						const response = await axios.post(
-							'http://site--backend-vinted--cfvhczrj5zks.code.run/payment',
+							'https://site--backend-vinted--cfvhczrj5zks.code.run/payment',
 							{
 								stripeToken,
 							}

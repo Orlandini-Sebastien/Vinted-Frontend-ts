@@ -32,7 +32,7 @@ const Payment = ({ token, setDisplayLogin }: PaymentType) => {
 						Authorization: `Bearer ${token}`,
 					},
 					method: 'GET',
-					url: `http://site--backend-vinted--cfvhczrj5zks.code.run/pay`,
+					url: `https://site--backend-vinted--cfvhczrj5zks.code.run/pay`,
 				})
 
 				console.log(data)

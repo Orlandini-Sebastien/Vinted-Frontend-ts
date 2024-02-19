@@ -24,7 +24,7 @@ const HomePage = ({
 		const fetchData = async () => {
 			try {
 				const response = await axios.get(
-					'http://site--backend-vinted--cfvhczrj5zks.code.run/offers?sort=asc'
+					'https://site--backend-vinted--cfvhczrj5zks.code.run/offers?sort=asc'
 				)
 				setData(response.data)
 			} catch (error) {

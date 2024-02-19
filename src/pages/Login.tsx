@@ -62,7 +62,7 @@ const Login = ({
 				const {
 					data,
 				} = await axios.post(
-					'http://site--backend-vinted--cfvhczrj5zks.code.run/user/login',
+					'https://site--backend-vinted--cfvhczrj5zks.code.run/user/login',
 					{ email: email, password: password }
 				)
 				console.log('response>>>>>>>', data)

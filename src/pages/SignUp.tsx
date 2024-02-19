@@ -89,7 +89,7 @@ export default function SignUp({
 
 				try {
 					const { data } = await axios.post(
-						'http://site--backend-vinted--cfvhczrj5zks.code.run/user/signup',
+						'https://site--backend-vinted--cfvhczrj5zks.code.run/user/signup',
 						formData
 					)
 					console.log('response', data)

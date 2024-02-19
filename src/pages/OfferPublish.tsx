@@ -47,7 +47,7 @@ const OfferPublish = ({ token, setDisplayLogin }: OfferPublishProps) => {
 
 				try {
 					const { data } = await axios.post(
-						'http://site--backend-vinted--cfvhczrj5zks.code.run/offer/publish',
+						'https://site--backend-vinted--cfvhczrj5zks.code.run/offer/publish',
 						formData,
 						{
 							headers: {
